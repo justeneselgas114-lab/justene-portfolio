@@ -14,16 +14,11 @@ import {
 import { Project, TechCategory, ProcessStep, ProofStatement, PricingPackage } from './types';
 
 /**
- * GOOGLE SHEETS AUTOMATION ENDPOINTS
- * Separate storage endpoints for different lead types.
+ * GOOGLE SHEETS AUTOMATION ENDPOINT
+ * Merged endpoint for all lead types (Pricing & General Inquiries).
  */
-
-// 1. Qualified Leads (Pricing Packages)
 export const PRICING_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzHX3Qj_LlWlcvoho2ExgoBhdEQ5P0KRGo9MOrbCT0qHTytZiqZWxka7ycRkBEqlnOa/exec';
-
-// 2. General Inquiries (CTA / Contact Page)
-// Paste your SECOND Apps Script URL here to keep inquiries separate
-export const CONTACT_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw8feKtMg88hOa-0O4WynDpuBZ-6I-IiwvPky6IXiBPWFdkw1k9_OnFl6vttl2MP5wH/exec';
+export const CONTACT_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzHX3Qj_LlWlcvoho2ExgoBhdEQ5P0KRGo9MOrbCT0qHTytZiqZWxka7ycRkBEqlnOa/exec';
 
 export const PROJECTS: Project[] = [
   {
