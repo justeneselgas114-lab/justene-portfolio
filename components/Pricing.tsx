@@ -83,7 +83,7 @@ const PackageInquiryModal: React.FC<{
   const displayPrice = currency === 'PHP' ? pkg.pricePHP : pkg.priceUSD;
 
   return (
-    <div className="fixed inset-0 z-[150] flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-[150] flex items-center justify-center p-3 sm:p-4">
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -108,8 +108,8 @@ const PackageInquiryModal: React.FC<{
 
         {!isSuccess ? (
           <div className="p-6 sm:p-12">
-            <div className="flex flex-wrap items-center gap-3 mb-6">
-              <div className={`px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest border ${
+            <div className="flex flex-wrap items-center gap-2 mb-6">
+              <div className={`px-4 py-1.5 rounded-full text-[9px] sm:text-[10px] font-black uppercase tracking-widest border ${
                 pkg.color === 'blue' ? 'bg-blue-50 border-blue-100 text-blue-700' :
                 pkg.color === 'amber' ? 'bg-amber-50 border-amber-100 text-amber-700' :
                 pkg.color === 'red' ? 'bg-red-50 border-red-100 text-red-700' :
@@ -117,7 +117,7 @@ const PackageInquiryModal: React.FC<{
               }`}>
                 {pkg.name} Tier
               </div>
-              <div className="flex items-center gap-1.5 text-slate-400 text-[10px] font-bold uppercase tracking-wider">
+              <div className="flex items-center gap-1.5 text-slate-400 text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">
                 <Clock size={12} />
                 {pkg.timeline} Est.
               </div>
@@ -139,7 +139,7 @@ const PackageInquiryModal: React.FC<{
                   {error}
                 </div>
               )}
-              <div className="grid sm:grid-cols-2 gap-6">
+              <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
                 <div>
                   <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Full Name</label>
                   <input 
@@ -180,7 +180,7 @@ const PackageInquiryModal: React.FC<{
                 ></textarea>
               </div>
 
-              <div className="p-6 bg-slate-900 rounded-[2rem] flex flex-col sm:flex-row items-center justify-between gap-6 group overflow-hidden relative">
+              <div className="p-5 sm:p-6 bg-slate-900 rounded-[2rem] flex flex-col sm:flex-row items-center justify-between gap-5 sm:gap-6 group overflow-hidden relative">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 blur-[50px]"></div>
                 <div className="relative z-10 text-center sm:text-left">
                   <p className="text-white font-black text-lg">
@@ -213,7 +213,7 @@ const PackageInquiryModal: React.FC<{
           <motion.div 
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="p-12 text-center"
+            className="p-10 sm:p-12 text-center"
           >
             <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 mx-auto mb-8">
               <Sparkles size={40} className="animate-pulse" />
@@ -241,9 +241,9 @@ const Pricing: React.FC = () => {
   const highEndEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
   return (
-    <section id="pricing" className="py-24 px-6 sm:px-12 lg:px-20 max-w-[1400px] mx-auto overflow-hidden">
+    <section id="pricing" className="py-24 px-4 sm:px-12 lg:px-20 max-w-[1400px] mx-auto overflow-hidden">
       {/* Currency Toggle */}
-      <div className="flex justify-center mb-16">
+      <div className="flex justify-center mb-12 sm:mb-16">
         <div className="bg-[#0f172a] p-1.5 rounded-full flex items-center gap-1 shadow-2xl relative overflow-hidden">
           <motion.div 
             layout
@@ -252,22 +252,22 @@ const Pricing: React.FC = () => {
           />
           <button 
             onClick={() => setCurrency('PHP')}
-            className={`relative z-10 px-8 sm:px-10 py-3 text-[10px] sm:text-[11px] font-black uppercase tracking-widest transition-all duration-500 flex items-center gap-2 ${currency === 'PHP' ? 'text-white' : 'text-slate-400 hover:text-slate-300'}`}
+            className={`relative z-10 px-6 sm:px-10 py-3 text-[9px] sm:text-[11px] font-black uppercase tracking-widest transition-all duration-500 flex items-center gap-2 ${currency === 'PHP' ? 'text-white' : 'text-slate-400 hover:text-slate-300'}`}
           >
             Local (PHP)
           </button>
           <button 
             onClick={() => setCurrency('USD')}
-            className={`relative z-10 px-8 sm:px-10 py-3 text-[10px] sm:text-[11px] font-black uppercase tracking-widest transition-all duration-500 flex items-center gap-2 ${currency === 'USD' ? 'text-white' : 'text-slate-400 hover:text-slate-300'}`}
+            className={`relative z-10 px-6 sm:px-10 py-3 text-[9px] sm:text-[11px] font-black uppercase tracking-widest transition-all duration-500 flex items-center gap-2 ${currency === 'USD' ? 'text-white' : 'text-slate-400 hover:text-slate-300'}`}
           >
-            <Globe2 size={12} />
+            <Globe2 size={12} className="hidden xs:block" />
             Global (USD)
           </button>
         </div>
       </div>
 
-      {/* Pricing Cards Grid - Widened for better spacing */}
-      <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8 xl:gap-10 items-stretch mb-20 max-w-[1280px] mx-auto">
+      {/* Pricing Cards Grid */}
+      <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 xl:gap-10 items-stretch mb-20 max-w-[1280px] mx-auto">
         {PRICING_PACKAGES.map((pkg, idx) => {
           const isPro = pkg.name === 'Professional';
           const displayPrice = currency === 'PHP' ? pkg.pricePHP : pkg.priceUSD;
@@ -291,7 +291,7 @@ const Pricing: React.FC = () => {
                 {/* Emerald Savings Banner */}
                 {savings && (
                   <div className="bg-[#10b981] py-3 text-center relative z-20">
-                    <div className="text-[9px] font-black text-white uppercase tracking-[0.2em] flex items-center justify-center gap-2 px-4">
+                    <div className="text-[8px] sm:text-[9px] font-black text-white uppercase tracking-[0.2em] flex items-center justify-center gap-2 px-4">
                       <Zap size={12} fill="white" className="flex-shrink-0" />
                       Limited Offer: Save {savings} Instantly
                     </div>
@@ -302,12 +302,12 @@ const Pricing: React.FC = () => {
                   {/* Badge Row */}
                   <div className="flex flex-wrap items-center gap-2 mb-6 sm:mb-8">
                     {isPro && (
-                      <div className="bg-blue-600 text-white text-[8px] font-black uppercase tracking-[0.2em] px-3 py-1.5 rounded flex items-center gap-1 shadow-sm">
+                      <div className="bg-blue-600 text-white text-[7px] sm:text-[8px] font-black uppercase tracking-[0.2em] px-2.5 py-1.5 rounded flex items-center gap-1 shadow-sm">
                         <Star size={10} fill="currentColor" />
                         Most Popular
                       </div>
                     )}
-                    <div className="bg-emerald-50 text-emerald-600 border border-emerald-100 text-[8px] font-black uppercase tracking-[0.2em] px-3 py-1.5 rounded flex items-center gap-1">
+                    <div className="bg-emerald-50 text-emerald-600 border border-emerald-100 text-[7px] sm:text-[8px] font-black uppercase tracking-[0.2em] px-2.5 py-1.5 rounded flex items-center gap-1">
                       <Tag size={10} />
                       Sale Live
                     </div>
@@ -339,7 +339,7 @@ const Pricing: React.FC = () => {
                         <Clock size={16} className="text-blue-500" />
                         Build Time
                       </div>
-                      <span className="text-slate-900 font-black text-[15px] pl-[26px]">{pkg.timeline}</span>
+                      <span className="text-slate-900 font-black text-[15px] pl-0 sm:pl-[26px]">{pkg.timeline}</span>
                     </div>
 
                     {/* Investment Vertical Column - Guaranteed No Overlap */}
@@ -349,7 +349,7 @@ const Pricing: React.FC = () => {
                         Investment
                       </div>
                       
-                      <div className="pl-[26px]">
+                      <div className="pl-0 sm:pl-[26px]">
                         {originalPrice && (
                           <div className="flex items-center gap-2 mb-2">
                              <span className="text-[9px] font-black text-slate-300 uppercase tracking-[0.2em]">Was</span>
@@ -361,13 +361,13 @@ const Pricing: React.FC = () => {
                         )}
                         
                         <div className="flex items-baseline gap-2 flex-wrap">
-                          <span className={`text-4xl sm:text-[2.6rem] font-black tracking-tighter leading-none ${
+                          <span className={`text-3xl sm:text-[2.6rem] font-black tracking-tighter leading-none ${
                             pkg.name === 'Starter' ? 'text-blue-600' :
                             pkg.name === 'Professional' ? 'text-[#f59e0b]' : 'text-slate-900'
                           }`}>
                             {displayPrice}
                           </span>
-                          <span className="text-[11px] font-black text-slate-400 uppercase tracking-widest">{currency}</span>
+                          <span className="text-[10px] sm:text-[11px] font-black text-slate-400 uppercase tracking-widest">{currency}</span>
                         </div>
                       </div>
                     </div>
@@ -396,32 +396,32 @@ const Pricing: React.FC = () => {
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="max-w-[1100px] mx-auto mb-16"
+        className="max-w-[1100px] mx-auto mb-16 px-0"
       >
-        <div className="bg-[#0f172a] p-8 sm:p-12 lg:p-14 rounded-[2rem] sm:rounded-[3rem] flex flex-col md:flex-row items-center justify-between gap-10 lg:gap-12 shadow-2xl relative overflow-hidden">
+        <div className="bg-[#0f172a] p-6 sm:p-12 lg:p-14 rounded-[2rem] sm:rounded-[3rem] flex flex-col md:flex-row items-center justify-between gap-10 shadow-2xl relative overflow-hidden">
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[120px]" />
           
           <div className="text-center md:text-left relative z-10 flex-1">
-            <h4 className="text-3xl sm:text-[2.5rem] font-black text-white mb-4 tracking-tight leading-tight uppercase">Need a Custom System?</h4>
-            <p className="text-slate-400 text-base font-medium leading-relaxed max-w-lg mx-auto md:mx-0">
+            <h4 className="text-2xl sm:text-[2.5rem] font-black text-white mb-4 tracking-tight leading-tight uppercase">Need a Custom System?</h4>
+            <p className="text-slate-400 text-sm sm:text-base font-medium leading-relaxed max-w-lg mx-auto md:mx-0">
               Bespoke architecture for unique business logic and heavy automation.
             </p>
           </div>
           <button 
             onClick={() => setSelectedPkg(CUSTOM_PKG)}
-            className="w-full md:w-auto px-10 sm:px-14 py-5 sm:py-6 bg-white text-slate-900 rounded-xl font-black uppercase tracking-[0.25em] text-[12px] hover:bg-slate-100 transition-all flex items-center justify-center gap-4 relative z-10 shadow-xl active:scale-95 whitespace-nowrap"
+            className="w-full md:w-auto px-10 sm:px-14 py-5 sm:py-6 bg-white text-slate-900 rounded-xl font-black uppercase tracking-[0.25em] text-[11px] sm:text-[12px] hover:bg-slate-100 transition-all flex items-center justify-center gap-4 relative z-10 shadow-xl active:scale-95 whitespace-nowrap"
           >
             Custom Quote <ArrowRight size={22} className="text-blue-600" />
           </button>
         </div>
 
         {/* Footer Meta */}
-        <div className="mt-12 sm:mt-14 flex flex-wrap justify-center gap-x-12 sm:gap-x-16 gap-y-6">
-          <div className="flex items-center gap-3 text-slate-400 text-[9px] font-black uppercase tracking-[0.35em]">
+        <div className="mt-10 sm:mt-14 flex flex-wrap justify-center gap-x-12 sm:gap-x-16 gap-y-6 px-4">
+          <div className="flex items-center gap-3 text-slate-400 text-[8px] sm:text-[9px] font-black uppercase tracking-[0.35em]">
             <HelpCircle size={18} className="text-blue-500 flex-shrink-0" />
             Timelines confirmed after discovery.
           </div>
-          <div className="flex items-center gap-3 text-slate-400 text-[9px] font-black uppercase tracking-[0.35em]">
+          <div className="flex items-center gap-3 text-slate-400 text-[8px] sm:text-[9px] font-black uppercase tracking-[0.35em]">
             <CreditCard size={18} className="text-[#10b981] flex-shrink-0" />
             Hosting/Domain billed to client.
           </div>
