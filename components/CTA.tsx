@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
@@ -13,7 +12,8 @@ import {
   Cpu,
   AlertCircle,
   Loader2,
-  Phone
+  Phone,
+  Tag
 } from 'lucide-react';
 import { PROOF, CONTACT_SCRIPT_URL } from '../constants';
 import * as Icons from 'lucide-react';
@@ -192,18 +192,28 @@ const CTA: React.FC = () => {
                       </div>
                     </div>
 
-                    <div>
-                      <label className="block text-[9px] sm:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-1 flex items-center gap-2">
-                        <Phone size={10} className="text-emerald-500" /> WhatsApp Number
-                      </label>
-                      <input 
-                        type="tel" 
-                        required
-                        placeholder="+63 9XX XXX XXXX"
-                        className="w-full px-4 py-4 sm:px-6 sm:py-5 bg-slate-50 border border-slate-200 rounded-xl sm:rounded-2xl text-slate-900 font-bold placeholder:text-slate-300 focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all text-sm sm:text-base"
-                        value={formData.whatsapp}
-                        onChange={(e) => setFormData({...formData, whatsapp: e.target.value})}
-                      />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+                      <div>
+                        <label className="block text-[9px] sm:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-1 flex items-center gap-2">
+                          <Phone size={10} className="text-emerald-500" /> WhatsApp Number
+                        </label>
+                        <input 
+                          type="tel" 
+                          required
+                          placeholder="+63 9XX XXX XXXX"
+                          className="w-full px-4 py-4 sm:px-6 sm:py-5 bg-slate-50 border border-slate-200 rounded-xl sm:rounded-2xl text-slate-900 font-bold placeholder:text-slate-300 focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all text-sm sm:text-base"
+                          value={formData.whatsapp}
+                          onChange={(e) => setFormData({...formData, whatsapp: e.target.value})}
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-[9px] sm:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-1 flex items-center gap-2">
+                          <Tag size={10} className="text-blue-500" /> Inquiry Type
+                        </label>
+                        <div className="w-full px-4 py-4 sm:px-6 sm:py-5 bg-blue-50 border border-blue-100 rounded-xl sm:rounded-2xl text-blue-600 font-black text-sm sm:text-base flex items-center gap-2 uppercase tracking-widest cursor-default">
+                          INQUIRY
+                        </div>
+                      </div>
                     </div>
 
                     <div>
