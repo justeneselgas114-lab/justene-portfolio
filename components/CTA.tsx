@@ -12,7 +12,8 @@ import {
   Sparkles,
   Cpu,
   AlertCircle,
-  Loader2
+  Loader2,
+  Phone
 } from 'lucide-react';
 import { PROOF, CONTACT_SCRIPT_URL } from '../constants';
 import * as Icons from 'lucide-react';
@@ -21,6 +22,7 @@ const CTA: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    whatsapp: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -36,6 +38,7 @@ const CTA: React.FC = () => {
       const params = new URLSearchParams();
       params.append('name', formData.name.trim());
       params.append('email', formData.email.trim());
+      params.append('whatsapp', formData.whatsapp.trim());
       params.append('package', 'General Inquiry');
       params.append('message', formData.message.trim());
 
@@ -53,7 +56,7 @@ const CTA: React.FC = () => {
       
       setTimeout(() => {
         setShowSuccess(false);
-        setFormData({ name: '', email: '', message: '' });
+        setFormData({ name: '', email: '', whatsapp: '', message: '' });
       }, 6000);
 
     } catch (err: any) {
@@ -92,7 +95,6 @@ const CTA: React.FC = () => {
           <div className="absolute top-[-50%] left-[-50%] w-[200%] h-[200%] bg-[radial-gradient(circle,rgba(59,130,246,0.3)_0%,rgba(0,0,0,0)_70%)]"></div>
         </div>
 
-        {/* Form Container: Reduced padding on mobile to maximize width */}
         <div className="relative z-10 grid lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-20 p-4 sm:p-12 lg:p-20">
           <div className="flex flex-col justify-center text-center lg:text-left pt-6 lg:pt-0 px-2 sm:px-0">
             <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-blue-600 flex items-center justify-center text-white mb-6 sm:mb-10 mx-auto lg:mx-0 shadow-xl">
@@ -146,7 +148,6 @@ const CTA: React.FC = () => {
                   initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.98 }}
-                  /* Form horizontal padding minimized on mobile: p-4 instead of p-5 */
                   className="bg-white p-4 xs:p-6 sm:p-10 rounded-[1.5rem] sm:rounded-[2.5rem] shadow-2xl"
                 >
                   <h3 className="text-xl sm:text-2xl font-black text-slate-900 mb-2 flex items-center gap-3 uppercase tracking-tight">
@@ -188,6 +189,20 @@ const CTA: React.FC = () => {
                           onChange={(e) => setFormData({...formData, email: e.target.value})}
                         />
                       </div>
+                    </div>
+
+                    <div>
+                      <label className="block text-[9px] sm:text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 ml-1 flex items-center gap-2">
+                        <Phone size={10} className="text-emerald-500" /> WhatsApp Number
+                      </label>
+                      <input 
+                        type="tel" 
+                        required
+                        placeholder="+63 9XX XXX XXXX"
+                        className="w-full px-4 py-4 sm:px-6 sm:py-5 bg-slate-50 border border-slate-200 rounded-xl sm:rounded-2xl text-slate-900 font-bold placeholder:text-slate-300 focus:outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all text-sm sm:text-base"
+                        value={formData.whatsapp}
+                        onChange={(e) => setFormData({...formData, whatsapp: e.target.value})}
+                      />
                     </div>
 
                     <div>
@@ -234,7 +249,7 @@ const CTA: React.FC = () => {
                   </div>
                   <h3 className="text-2xl sm:text-3xl font-black text-slate-900 mb-4 uppercase tracking-tight">Brief Logged</h3>
                   <p className="text-slate-500 text-base sm:text-lg font-medium max-w-sm mx-auto mb-8 sm:mb-10 px-4">
-                    Your inquiry has been synced to my Google Sheets. I'll review the requirements and contact you within 5-6 hours.
+                    Your inquiry has been synced to my Google Sheets. I'll review the requirements and contact you within 24 hours.
                   </p>
                   <button 
                     onClick={() => setShowSuccess(false)}

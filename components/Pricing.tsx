@@ -15,14 +15,14 @@ import {
   Tag,
   Zap,
   Loader2,
-  AlertCircle
+  AlertCircle,
+  Phone
 } from 'lucide-react';
 import { PRICING_PACKAGES, PRICING_SCRIPT_URL } from '../constants';
 import { PricingPackage } from '../types';
 
 type Currency = 'PHP' | 'USD';
 
-// Virtual package for Custom Quotes
 const CUSTOM_PKG: PricingPackage = {
   name: "Bespoke Enterprise",
   bestFor: "Custom business logic & unique logic platforms",
@@ -44,7 +44,7 @@ const PackageInquiryModal: React.FC<{
   onClose: () => void;
   currency: Currency;
 }> = ({ pkg, onClose, currency }) => {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', whatsapp: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -60,6 +60,7 @@ const PackageInquiryModal: React.FC<{
       const params = new URLSearchParams();
       params.append('name', formData.name.trim());
       params.append('email', formData.email.trim());
+      params.append('whatsapp', formData.whatsapp.trim());
       params.append('package', pkg.name);
       params.append('message', formData.message.trim());
 
@@ -139,6 +140,7 @@ const PackageInquiryModal: React.FC<{
                   {error}
                 </div>
               )}
+              
               <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
                 <div>
                   <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2">Full Name</label>
@@ -162,6 +164,20 @@ const PackageInquiryModal: React.FC<{
                     className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none font-bold text-slate-900"
                   />
                 </div>
+              </div>
+
+              <div>
+                <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-2 flex items-center gap-2">
+                  <Phone size={12} className="text-emerald-500" /> WhatsApp Number
+                </label>
+                <input 
+                  required
+                  type="tel" 
+                  placeholder="+63 9XX XXX XXXX"
+                  value={formData.whatsapp}
+                  onChange={e => setFormData({...formData, whatsapp: e.target.value})}
+                  className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none font-bold text-slate-900"
+                />
               </div>
 
               <div>
