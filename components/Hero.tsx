@@ -93,7 +93,7 @@ const Hero: React.FC = () => {
             WEBSITE DEVELOPMENT
           </motion.div>
           
-          <motion.h1 variants={itemVariants} className="text-4xl xs:text-5xl sm:text-6xl lg:text-[5.5rem] font-black tracking-tighter text-slate-900 mb-6 sm:mb-8 leading-[1.05]">
+          <motion.h1 variants={itemVariants} className="text-[2.75rem] xs:text-5xl sm:text-6xl lg:text-[5.5rem] font-black tracking-tighter text-slate-900 mb-6 sm:mb-8 leading-[1.05]">
             I build <br className="hidden sm:block" />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-700 drop-shadow-sm uppercase">SYSTEMS</span><br />
             that scale <span className="relative inline-block">

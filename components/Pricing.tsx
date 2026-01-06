@@ -243,7 +243,7 @@ const Pricing: React.FC = () => {
   const highEndEase: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
   return (
-    <section id="pricing" className="py-24 px-3 sm:px-12 lg:px-20 max-w-[1400px] mx-auto overflow-hidden">
+    <section id="pricing" className="py-24 px-4 sm:px-12 lg:px-20 max-w-[1400px] mx-auto overflow-hidden">
       {/* Section Header */}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
@@ -259,7 +259,7 @@ const Pricing: React.FC = () => {
             transition={{ duration: 1, delay: 0.5, ease: highEndEase }}
             className="h-1 bg-blue-600 rounded-full sm:w-12"
           />
-          <h2 className="text-2xl sm:text-5xl font-black text-slate-900 tracking-tighter uppercase">
+          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tighter uppercase">
             Strategic <span className="text-blue-600">Investment</span>
           </h2>
           <motion.span 
@@ -298,8 +298,8 @@ const Pricing: React.FC = () => {
         </div>
       </div>
 
-      {/* Pricing Cards Grid */}
-      <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-8 xl:gap-10 items-stretch mb-20 max-w-[1280px] mx-auto">
+      {/* Pricing Cards Grid - Optimized for mobile view */}
+      <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 xl:gap-10 items-stretch mb-20 max-w-[1280px] mx-auto">
         {PRICING_PACKAGES.map((pkg, idx) => {
           const isPro = pkg.name === 'Professional';
           const displayPrice = currency === 'PHP' ? pkg.pricePHP : pkg.priceUSD;
@@ -330,7 +330,7 @@ const Pricing: React.FC = () => {
                   </div>
                 )}
 
-                <div className="p-5 xs:p-6 sm:p-10 flex flex-col h-full">
+                <div className="p-6 xs:p-8 sm:p-10 flex flex-col h-full">
                   {/* Badge Row */}
                   <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-6">
                     {isPro && (
@@ -348,7 +348,7 @@ const Pricing: React.FC = () => {
                   {/* Header */}
                   <div className="mb-6 sm:mb-8">
                     <h3 className="text-2xl sm:text-[2.5rem] font-black text-slate-900 tracking-tighter mb-2 leading-none uppercase">{pkg.name}</h3>
-                    <p className="text-[9px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-[0.15em] leading-relaxed max-w-[280px]">
+                    <p className="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-[0.15em] leading-relaxed max-w-[280px]">
                       {pkg.bestFor}
                     </p>
                   </div>
@@ -357,8 +357,8 @@ const Pricing: React.FC = () => {
                   <div className="space-y-3.5 sm:space-y-4 mb-8 sm:mb-10 flex-grow">
                     {pkg.includes.map((feature) => (
                       <div key={feature} className="flex items-start gap-3 sm:gap-4">
-                        <CheckCircle2 size={14} className="text-blue-600 mt-0.5 sm:mt-1 flex-shrink-0" />
-                        <span className="text-slate-600 font-bold text-[12px] sm:text-[14px] tracking-tight leading-snug">{feature}</span>
+                        <CheckCircle2 size={14} className="text-blue-600 mt-1 flex-shrink-0" />
+                        <span className="text-slate-600 font-bold text-[14px] sm:text-[14px] tracking-tight leading-snug">{feature}</span>
                       </div>
                     ))}
                   </div>
@@ -371,7 +371,7 @@ const Pricing: React.FC = () => {
                         <Clock size={14} className="text-blue-500" />
                         Build Time
                       </div>
-                      <span className="text-slate-900 font-black text-[14px] sm:text-[15px] sm:pl-[26px]">{pkg.timeline}</span>
+                      <span className="text-slate-900 font-black text-[15px] sm:text-[15px] sm:pl-[26px]">{pkg.timeline}</span>
                     </div>
 
                     {/* Investment */}
@@ -392,20 +392,20 @@ const Pricing: React.FC = () => {
                         )}
                         
                         <div className="flex items-baseline gap-1.5 flex-wrap">
-                          <span className={`text-2xl sm:text-[2.6rem] font-black tracking-tighter leading-none ${
+                          <span className={`text-3xl sm:text-[2.6rem] font-black tracking-tighter leading-none ${
                             pkg.name === 'Starter' ? 'text-blue-600' :
                             pkg.name === 'Professional' ? 'text-[#f59e0b]' : 'text-slate-900'
                           }`}>
                             {displayPrice}
                           </span>
-                          <span className="text-[9px] sm:text-[11px] font-black text-slate-400 uppercase tracking-widest">{currency}</span>
+                          <span className="text-[10px] sm:text-[11px] font-black text-slate-400 uppercase tracking-widest">{currency}</span>
                         </div>
                       </div>
                     </div>
 
                     <button 
                       onClick={() => setSelectedPkg(pkg)}
-                      className={`w-full py-4 sm:py-5 rounded-xl sm:rounded-2xl font-black text-[11px] sm:text-[12px] uppercase tracking-[0.2em] transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 active:scale-[0.98] ${
+                      className={`w-full py-4 sm:py-5 rounded-xl sm:rounded-2xl font-black text-[12px] sm:text-[12px] uppercase tracking-[0.2em] transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 active:scale-[0.98] ${
                         isPro 
                           ? 'bg-blue-600 text-white hover:bg-blue-700 shadow-xl shadow-blue-500/20' 
                           : 'bg-[#0f172a] text-white hover:bg-slate-800'
@@ -433,14 +433,14 @@ const Pricing: React.FC = () => {
           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/5 rounded-full blur-[120px]" />
           
           <div className="text-center md:text-left relative z-10 flex-1">
-            <h4 className="text-xl sm:text-[2.5rem] font-black text-white mb-3 tracking-tight leading-tight uppercase">Bespoke Solutions & Flexible Budgeting</h4>
-            <p className="text-slate-400 text-xs sm:text-base font-medium leading-relaxed max-w-lg mx-auto md:mx-0">
+            <h4 className="text-2xl sm:text-[2.5rem] font-black text-white mb-3 tracking-tight leading-tight uppercase">Bespoke Solutions & Flexible Budgeting</h4>
+            <p className="text-slate-400 text-sm sm:text-base font-medium leading-relaxed max-w-lg mx-auto md:mx-0">
               I engineer custom websites designed around your specific business logic. To ensure 100% transparency, <span className="text-white font-bold underline decoration-blue-500/40">your project's total budget is determined collaboratively</span> after our initial strategy session.
             </p>
           </div>
           <button 
             onClick={() => setSelectedPkg(CUSTOM_PKG)}
-            className="w-full md:w-auto px-8 sm:px-14 py-4 sm:py-6 bg-white text-slate-900 rounded-xl font-black uppercase tracking-[0.2em] text-[10px] sm:text-[12px] hover:bg-slate-100 transition-all flex items-center justify-center gap-3 relative z-10 shadow-xl active:scale-95 whitespace-nowrap"
+            className="w-full md:w-auto px-8 sm:px-14 py-4 sm:py-6 bg-white text-slate-900 rounded-xl font-black uppercase tracking-[0.2em] text-[11px] sm:text-[12px] hover:bg-slate-100 transition-all flex items-center justify-center gap-3 relative z-10 shadow-xl active:scale-95 whitespace-nowrap"
           >
             Consult on My Project <ArrowRight size={20} className="text-blue-600" />
           </button>
@@ -448,11 +448,11 @@ const Pricing: React.FC = () => {
 
         {/* Footer Meta */}
         <div className="mt-8 sm:mt-14 flex flex-col sm:flex-row items-center justify-center gap-y-4 gap-x-12 sm:gap-x-16 px-4">
-          <div className="flex items-center gap-2 text-slate-400 text-[8px] sm:text-[9px] font-black uppercase tracking-[0.25em] text-center">
+          <div className="flex items-center gap-2 text-slate-400 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.25em] text-center">
             <HelpCircle size={16} className="text-blue-500 flex-shrink-0" />
             Flexible billing based on architecture.
           </div>
-          <div className="flex items-center gap-2 text-slate-400 text-[8px] sm:text-[9px] font-black uppercase tracking-[0.25em] text-center">
+          <div className="flex items-center gap-2 text-slate-400 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.25em] text-center">
             <CreditCard size={16} className="text-[#10b981] flex-shrink-0" />
             Infrastructure billed separately.
           </div>

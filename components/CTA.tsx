@@ -234,7 +234,7 @@ const CTA: React.FC = () => {
                   </div>
                   <h3 className="text-2xl sm:text-3xl font-black text-slate-900 mb-4 uppercase tracking-tight">Brief Logged</h3>
                   <p className="text-slate-500 text-base sm:text-lg font-medium max-w-sm mx-auto mb-8 sm:mb-10 px-4">
-                    Your inquiry has been synced to my Google Sheets. I'll review the requirements and contact you within 24 hours.
+                    Your inquiry has been synced to my Google Sheets. I'll review the requirements and contact you within 5-6 hours.
                   </p>
                   <button 
                     onClick={() => setShowSuccess(false)}
