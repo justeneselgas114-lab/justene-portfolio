@@ -9,7 +9,7 @@ import Process from './components/Process';
 import Pricing from './components/Pricing';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
-import { ChevronUp, X, Send, MessageCircle } from 'lucide-react';
+import { ChevronUp, X, MessageCircle } from 'lucide-react';
 
 const FloatingActionButtons: React.FC = () => {
   const [showScroll, setShowScroll] = useState(false);
@@ -69,7 +69,7 @@ const FloatingActionButtons: React.FC = () => {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 20, scale: 0.9 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="absolute bottom-20 right-0 w-[290px] sm:w-[350px] bg-white rounded-[2.5rem] shadow-[0_30px_70px_-15px_rgba(0,0,0,0.2)] border border-slate-100 overflow-hidden z-20"
+              className="absolute bottom-20 right-0 w-[290px] sm:w-[350px] bg-white rounded-[2.5rem] shadow-[0_30px_70px_-15px_rgba(0,0,0,0.3)] border border-slate-100 overflow-hidden z-20"
             >
               {/* Card Header */}
               <div className="bg-slate-900 p-6 text-white flex items-center justify-between">
@@ -117,35 +117,36 @@ const FloatingActionButtons: React.FC = () => {
           )}
         </AnimatePresence>
 
-        {/* Floating Indicator Status */}
+        {/* Floating Indicator Status - Highly Visible */}
         {!isChatOpen && (
           <motion.div 
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 1 }}
-            className="mb-3 px-3 py-2 sm:px-5 sm:py-3 bg-white border border-emerald-100 rounded-xl sm:rounded-2xl shadow-[0_12px_35px_rgba(0,0,0,0.1)] flex items-center gap-3 whitespace-nowrap"
+            className="mb-3 px-4 py-3 sm:px-6 sm:py-4 bg-white border-2 border-emerald-500/20 rounded-2xl shadow-[0_25px_60px_rgba(16,185,129,0.15)] flex items-center gap-4 whitespace-nowrap cursor-pointer hover:border-emerald-500/40 hover:bg-emerald-50/50 transition-all group/badge"
+            onClick={() => setIsChatOpen(true)}
           >
-            <span className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
+            <span className="relative flex h-3 w-3 sm:h-4 sm:w-4">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 sm:h-2.5 sm:w-2.5 bg-emerald-500"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 sm:h-4 sm:w-4 bg-emerald-500"></span>
             </span>
             <div className="flex flex-col">
-              <span className="text-[9px] sm:text-[11px] font-black uppercase tracking-widest text-slate-900 leading-none mb-0.5">Justene is online</span>
-              <span className="text-[8px] sm:text-[10px] font-bold text-emerald-600 uppercase tracking-wider leading-none">Ready to chat</span>
+              <span className="text-[11px] sm:text-[13px] font-black uppercase tracking-widest text-slate-900 leading-none mb-1 group-hover/badge:text-emerald-700 transition-colors">I am Online</span>
+              <span className="text-[8px] sm:text-[10px] font-bold text-emerald-600 uppercase tracking-[0.15em] leading-none">Response: Instant</span>
             </div>
           </motion.div>
         )}
 
-        {/* Pulse Effect */}
+        {/* Pulse Effect AURA */}
         <div className="absolute bottom-0 w-14 h-14 sm:w-16 sm:h-16 pointer-events-none">
           <motion.div
-            animate={{ scale: [1, 1.4, 1], opacity: [0.2, 0, 0.2] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            animate={{ scale: [1, 1.8, 1], opacity: [0.2, 0, 0.2] }}
+            transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
             className="absolute inset-0 bg-emerald-500 rounded-full"
           />
         </div>
 
-        {/* Main Toggle Button - Made slightly larger on mobile for visibility */}
+        {/* Main Toggle Button */}
         <motion.button
           onClick={() => setIsChatOpen(!isChatOpen)}
           initial={{ scale: 0, opacity: 0 }}
@@ -153,7 +154,7 @@ const FloatingActionButtons: React.FC = () => {
           whileHover={{ scale: 1.05, y: -4 }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          className={`relative z-10 flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl shadow-[0_20px_45px_-10px_rgba(15,23,42,0.4)] transition-all duration-500 overflow-hidden border-2 border-white/20 group/btn ${
+          className={`relative z-10 flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-2xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.6)] transition-all duration-500 overflow-hidden border-2 border-white/40 group/btn ${
             isChatOpen ? 'bg-white text-slate-900 border-slate-200' : 'bg-slate-900 text-white'
           }`}
           title="Chat on WhatsApp"
@@ -181,9 +182,9 @@ const FloatingActionButtons: React.FC = () => {
               </motion.div>
             )}
           </AnimatePresence>
-          <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/30 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-700" />
+          <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/40 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-700" />
           {!isChatOpen && (
-            <span className="absolute top-1.5 right-1.5 w-3 h-3 bg-emerald-500 rounded-full border-2 border-slate-900 shadow-sm" />
+            <span className="absolute top-1.5 right-1.5 w-4 h-4 bg-emerald-500 rounded-full border-2 border-slate-900 shadow-sm" />
           )}
         </motion.button>
       </div>
