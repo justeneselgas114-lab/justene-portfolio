@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Mail, ArrowDown, Calendar, Download } from "lucide-react";
+import { Mail, ArrowDown, Calendar } from "lucide-react";
 import { FaLinkedinIn, FaFacebookF, FaWhatsapp } from "react-icons/fa";
 import { useRef } from "react";
 import Image from "next/image";
@@ -73,14 +73,6 @@ export default function Hero() {
               >
                 <Calendar size={16} />
                 Book a Meeting
-              </a>
-              <a
-                href="/cv-justene-selgas.pdf"
-                download
-                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-white/10 rounded-lg hover:bg-gray-50 dark:hover:bg-white/5 transition-all"
-              >
-                <Download size={16} />
-                Download CV
               </a>
               <a
                 href="#automations"

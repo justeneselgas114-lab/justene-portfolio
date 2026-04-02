@@ -124,7 +124,7 @@ export default function Navbar() {
             </button>
 
             <a
-              href="/resume.pdf"
+              href="/cv-justene-selgas.pdf"
               download
               className="hidden md:flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-500 to-indigo-500 rounded-lg hover:from-blue-600 hover:to-indigo-600 transition-all shadow-lg shadow-blue-500/25"
             >
@@ -176,7 +176,7 @@ export default function Navbar() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: navLinks.length * 0.05 }}
-                href="/resume.pdf"
+                href="/cv-justene-selgas.pdf"
                 download
                 className="flex items-center justify-center gap-2 mt-3 px-4 py-3.5 text-base font-medium text-white bg-gradient-to-r from-blue-500 to-indigo-500 rounded-xl active:scale-[0.98] transition-transform"
               >
