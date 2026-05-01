@@ -17,4 +17,13 @@ if (!parsed.success) {
   throw new Error("Invalid environment variables");
 }
 
+/**
+ * Validated environment variables.
+ *
+ * - Throws at module load if env is invalid (fail-fast — intentional).
+ * - Server-only. `NEXT_PUBLIC_*` values read through this object are NOT
+ *   inlined by Next.js's bundler. In client components, read
+ *   `process.env.NEXT_PUBLIC_X` literally so the value is statically
+ *   replaced at build time.
+ */
 export const env = parsed.data;
