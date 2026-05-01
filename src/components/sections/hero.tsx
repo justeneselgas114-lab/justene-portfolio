@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { ArrowRight, Download } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
