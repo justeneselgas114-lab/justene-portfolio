@@ -104,28 +104,60 @@ const categories: Category[] = [
   },
 ];
 
-const tools = [
-  { name: "Claude Code", brand: "claude" },
-  { name: "MCP", brand: "model-context-protocol" },
-  { name: "Anthropic", brand: "anthropic" },
-  { name: "OpenAI", brand: "openai" },
-  { name: "Gemini", brand: "gemini" },
-  { name: "n8n", brand: "n8n" },
-  { name: "React", brand: "react" },
-  { name: "Next.js", brand: "nextdotjs" },
-  { name: "TypeScript", brand: "typescript" },
-  { name: "Tailwind", brand: "tailwind-css" },
-  { name: "PostgreSQL", brand: "postgresql" },
-  { name: "Supabase", brand: "supabase" },
-  { name: "Vercel", brand: "vercel" },
-  { name: "Git", brand: "git" },
+// SVG-only marquee strip — auto-scrolls infinitely sideways
+const marqueeIcons = [
+  "claude",
+  "anthropic",
+  "openai",
+  "gemini",
+  "model-context-protocol",
+  "n8n",
+  "zapier",
+  "make",
+  "react",
+  "nextdotjs",
+  "typescript",
+  "javascript",
+  "tailwind-css",
+  "postgresql",
+  "mongodb",
+  "supabase",
+  "redis",
+  "prisma",
+  "vercel",
+  "github",
+  "git",
+  "docker",
+  "visual-studio-code",
+  "python",
+  "go",
+  "rust",
+  "html5",
+  "sass",
+  "webpack",
+  "vite",
+  "bun",
+  "jest",
+  "vitest",
+  "aws",
+  "google-cloud",
+  "cloudflare",
+  "linux",
+  "postman",
+  "npm",
+  "pnpm",
+  "stripe",
+  "twilio",
+  "hubspot",
+  "slack",
+  "figma",
 ];
 
 export function Skills() {
   return (
     <section id="skills" className="py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal className="text-center mb-16">
+        <Reveal className="text-center mb-12">
           <p className="font-mono text-xs text-accent mb-3">
             // 02 — stack.json
           </p>
@@ -136,21 +168,34 @@ export function Skills() {
             Claude Code is my power tool — I extend it with custom MCP servers, plugins, and skills to ship faster than most teams.
           </p>
         </Reveal>
+      </div>
 
-        {/* Tool strip — code-import style */}
-        <Reveal delay={0.1} className="flex flex-wrap justify-center items-center gap-x-3 gap-y-3 mb-16 font-mono text-xs">
-          <span className="text-accent">import</span>
-          <span className="text-fg-subtle">{"{"}</span>
-          {tools.map((tool, i) => (
-            <span key={tool.name} className="inline-flex items-center gap-1.5 text-fg-muted hover:text-accent transition-colors cursor-default">
-              <BrandIcon name={tool.brand} size={14} alt={tool.name} />
-              <span>{tool.name}</span>
-              {i < tools.length - 1 && <span className="text-fg-subtle">,</span>}
-            </span>
-          ))}
-          <span className="text-fg-subtle">{"}"}</span>
-        </Reveal>
+      {/* Infinite marquee — full bleed, no container */}
+      <Reveal delay={0.1} className="mb-16 relative">
+        <div
+          className="overflow-hidden relative py-4"
+          style={{
+            maskImage:
+              "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%)",
+          }}
+        >
+          <div className="flex gap-12 w-max animate-marquee">
+            {[...marqueeIcons, ...marqueeIcons].map((slug, i) => (
+              <div
+                key={`${slug}-${i}`}
+                className="shrink-0 h-10 w-10 flex items-center justify-center text-fg-muted hover:text-accent transition-colors"
+                aria-hidden={i >= marqueeIcons.length}
+              >
+                <BrandIcon name={slug} size={32} alt={slug} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </Reveal>
 
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Category cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((cat, i) => (
