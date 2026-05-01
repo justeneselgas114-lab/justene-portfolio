@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { ArrowRight, Download } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import { DecorCircles } from "@/components/ui/decor-circles";
 
@@ -80,8 +79,8 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Desktop photo — absolute, anchored just above bottom strip border */}
-      <div className="hidden lg:block absolute bottom-20 left-1/2 -translate-x-1/2 w-[38vw] max-w-xl aspect-square z-10 pointer-events-none">
+      {/* Desktop photo — absolute, anchored to section bottom (cut hides in About transition) */}
+      <div className="hidden lg:block absolute bottom-0 left-1/2 -translate-x-1/2 w-[38vw] max-w-xl aspect-square z-10 pointer-events-none">
         <Image
           src="/profile.png"
           alt="Justene Selgas"
@@ -92,27 +91,6 @@ export function Hero() {
         />
       </div>
 
-      {/* Bottom strip — sits at section bottom in flow, on top of photo */}
-      <div className="hidden lg:block relative z-20 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-6">
-        <div className="flex items-center justify-between pt-6 border-t border-border">
-          <a
-            href="mailto:theconceptlogin@gmail.com"
-            className="flex items-center gap-2 text-sm text-fg-muted hover:text-accent transition-colors"
-          >
-            <span className="w-2 h-2 rounded-full bg-accent" />
-            theconceptlogin@gmail.com
-          </a>
-          <a
-            href="https://wa.me/639638296973"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm text-fg-muted hover:text-accent transition-colors"
-          >
-            Let&apos;s Chat
-            <FaWhatsapp size={16} className="text-green-600" />
-          </a>
-        </div>
-      </div>
     </section>
   );
 }
