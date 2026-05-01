@@ -22,11 +22,11 @@ export function Hero() {
             <p className="font-serif italic text-4xl lg:text-5xl text-fg font-light leading-tight">
               Hi,
             </p>
-            <h1 className="font-serif italic text-5xl lg:text-7xl font-light leading-tight mt-2">
+            <h1 className="font-serif italic text-5xl lg:text-6xl font-light leading-tight mt-2 whitespace-nowrap">
               <span className="text-fg">I&apos;m </span>
               <span className="text-accent">Justene</span>
             </h1>
-            <p className="font-sans text-lg lg:text-xl text-fg-muted mt-6">
+            <p className="font-sans text-base lg:text-lg text-fg-muted mt-6 whitespace-nowrap">
               AI Specialist &amp; Automation Expert
             </p>
             <Button asChild size="lg" className="mt-8 group">
@@ -80,8 +80,8 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Desktop photo — absolute, anchored bottom-center, capped width */}
-      <div className="hidden lg:block absolute bottom-0 left-1/2 -translate-x-1/2 w-[38vw] max-w-xl aspect-square z-10 pointer-events-none">
+      {/* Desktop photo — absolute, anchored just above bottom strip border */}
+      <div className="hidden lg:block absolute bottom-20 left-1/2 -translate-x-1/2 w-[38vw] max-w-xl aspect-square z-10 pointer-events-none">
         <Image
           src="/profile.png"
           alt="Justene Selgas"
