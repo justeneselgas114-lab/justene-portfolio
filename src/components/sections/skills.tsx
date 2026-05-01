@@ -58,41 +58,50 @@ export function Skills() {
     <section id="skills" className="py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal className="text-center mb-16">
-          <p className="font-sans text-xs uppercase tracking-[0.2em] text-accent font-medium mb-3">
-            What I Use
+          <p className="font-mono text-xs text-accent mb-3">
+            // 02 — stack.json
           </p>
           <h2 className="font-serif text-4xl lg:text-5xl text-fg font-medium">
             Skills &amp; Tech Stack
           </h2>
         </Reveal>
 
-        {/* Tool strip */}
-        <Reveal delay={0.1} className="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-16">
-          {tools.map((tool) => (
-            <div
-              key={tool.name}
-              className="flex items-center gap-2 text-sm text-fg-muted hover:text-accent transition-colors cursor-default"
-            >
-              <tool.icon size={16} />
-              <span className="font-sans">{tool.name}</span>
-            </div>
+        {/* Tool strip — code-import style */}
+        <Reveal delay={0.1} className="flex flex-wrap justify-center items-center gap-x-3 gap-y-3 mb-16 font-mono text-xs">
+          <span className="text-accent">import</span>
+          <span className="text-fg-subtle">{"{"}</span>
+          {tools.map((tool, i) => (
+            <span key={tool.name} className="inline-flex items-center gap-1.5 text-fg-muted hover:text-accent transition-colors cursor-default">
+              <tool.icon size={12} />
+              <span>{tool.name}</span>
+              {i < tools.length - 1 && <span className="text-fg-subtle">,</span>}
+            </span>
           ))}
+          <span className="text-fg-subtle">{"}"}</span>
         </Reveal>
 
         {/* Category cards */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((cat, i) => (
             <Reveal key={cat.title} delay={0.1 + i * 0.05}>
-              <div className="p-6 rounded-xl bg-bg-elevated hover:-translate-y-1 transition-transform duration-300">
-                <div className="flex items-center gap-3 mb-5">
-                  <cat.icon size={22} className="text-accent" strokeWidth={1.5} />
-                  <h3 className="font-serif text-xl text-fg font-medium">{cat.title}</h3>
+              <div className="p-6 rounded-xl bg-bg-elevated border border-border hover:border-accent/30 hover:-translate-y-1 transition-all duration-300 group">
+                <div className="flex items-center justify-between mb-5">
+                  <div className="flex items-center gap-3">
+                    <cat.icon size={22} className="text-accent" strokeWidth={1.5} />
+                    <h3 className="font-serif text-xl text-fg font-medium">{cat.title}</h3>
+                  </div>
+                  <span className="font-mono text-xs text-fg-subtle group-hover:text-accent transition-colors">
+                    0{i + 1}
+                  </span>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {cat.skills.map((skill) => (
-                    <Chip key={skill} variant="default">
+                    <span
+                      key={skill}
+                      className="inline-flex items-center px-2 py-1 rounded font-mono text-xs text-fg-muted bg-bg border border-border"
+                    >
                       {skill}
-                    </Chip>
+                    </span>
                   ))}
                 </div>
               </div>

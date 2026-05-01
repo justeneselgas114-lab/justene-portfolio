@@ -14,8 +14,8 @@ export function About() {
     <section id="about" className="py-24 bg-bg-muted">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal className="text-center mb-16">
-          <p className="font-sans text-xs uppercase tracking-[0.2em] text-accent font-medium mb-3">
-            Who I Am
+          <p className="font-mono text-xs text-accent mb-3">
+            // 01 — who_i_am
           </p>
           <h2 className="font-serif text-4xl lg:text-5xl text-fg font-medium">About Me</h2>
         </Reveal>

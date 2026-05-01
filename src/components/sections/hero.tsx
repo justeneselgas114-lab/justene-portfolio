@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen h-screen flex flex-col pt-24 overflow-hidden"
+      className="relative min-h-screen h-screen flex flex-col pt-24 overflow-hidden bg-grid-dots"
     >
       <DecorCircles />
 
@@ -18,6 +18,11 @@ export function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,2fr)_1fr] gap-8 lg:gap-16 items-center">
           {/* LEFT */}
           <div className="order-2 lg:order-1">
+            <p className="font-mono text-xs text-fg-subtle mb-4 flex items-center gap-2">
+              <span className="text-accent">~/portfolio</span>
+              <span>$</span>
+              <span className="inline-block w-1.5 h-3.5 bg-accent animate-pulse" aria-hidden="true" />
+            </p>
             <p className="font-serif italic text-4xl lg:text-5xl text-fg font-light leading-tight">
               Hi,
             </p>
@@ -28,6 +33,12 @@ export function Hero() {
             <p className="font-sans text-base lg:text-lg text-fg-muted mt-6 whitespace-nowrap">
               AI Specialist &amp; Automation Expert
             </p>
+            <div className="mt-3 inline-flex items-center gap-2 font-mono text-xs text-fg-subtle">
+              <span className="relative inline-flex">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 status-dot text-emerald-500" />
+              </span>
+              <span>available for new projects</span>
+            </div>
             <Button asChild size="lg" className="mt-8 group">
               <a
                 href="#contact"
@@ -58,10 +69,10 @@ export function Hero() {
 
           {/* RIGHT */}
           <div className="order-3 lg:order-3 lg:col-start-3 lg:pl-4 max-w-xs lg:max-w-none">
-            <p className="font-sans text-xs uppercase tracking-[0.2em] text-accent font-medium">
-              Expert on
+            <p className="font-mono text-xs text-accent mb-3">
+              &gt; expert_on
             </p>
-            <p className="font-serif text-xl lg:text-2xl text-fg leading-snug mt-3">
+            <p className="font-serif text-xl lg:text-2xl text-fg leading-snug">
               Based in Davao City, I build AI workflows and modern web experiences.
             </p>
             <p className="font-sans text-sm text-fg-muted leading-relaxed mt-5 max-w-xs">
@@ -70,10 +81,10 @@ export function Hero() {
             <a
               href="/cv-justene-selgas.pdf"
               download
-              className="inline-flex items-center gap-2 mt-6 font-sans text-sm text-accent hover:text-accent-hover underline underline-offset-4"
+              className="inline-flex items-center gap-2 mt-6 font-mono text-xs text-accent hover:text-accent-hover underline underline-offset-4"
             >
-              Download CV
-              <Download size={14} />
+              <span>./cv.pdf</span>
+              <Download size={12} />
             </a>
           </div>
         </div>

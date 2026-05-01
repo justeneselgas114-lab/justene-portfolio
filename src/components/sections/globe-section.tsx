@@ -131,8 +131,8 @@ export function GlobeSection() {
       className="relative w-full bg-bg-muted py-16 sm:py-20"
     >
       <Reveal className="text-center mb-8">
-        <p className="font-sans text-xs uppercase tracking-[0.2em] text-accent font-medium mb-3">
-          Global Reach
+        <p className="font-mono text-xs text-accent mb-3">
+          // 04 — geo.reach
         </p>
         <h2 className="font-serif text-3xl lg:text-4xl text-fg font-medium">
           Working Worldwide
