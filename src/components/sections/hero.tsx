@@ -44,22 +44,14 @@ export function Hero() {
 
           {/* CENTER PHOTO */}
           <div className="order-1 lg:order-2 flex justify-center">
-            <div
-              className="relative aspect-[4/5] w-full max-w-md"
-              style={{
-                maskImage:
-                  "radial-gradient(ellipse at center, black 60%, transparent 95%)",
-                WebkitMaskImage:
-                  "radial-gradient(ellipse at center, black 60%, transparent 95%)",
-              }}
-            >
+            <div className="relative aspect-[2/3] w-full max-w-md">
               <Image
                 src="/profile.png"
                 alt="Justene Selgas"
                 fill
                 priority
                 sizes="(max-width: 768px) 90vw, 40vw"
-                className="object-cover object-top"
+                className="object-contain object-bottom"
               />
             </div>
           </div>
