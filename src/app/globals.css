@@ -3,45 +3,88 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
+  --bg: #F5EFE6;
+  --bg-elevated: #FAF6EE;
+  --bg-muted: #EDE4D3;
+  --fg: #2A1F14;
+  --fg-muted: #6B5A47;
+  --fg-subtle: #A89784;
+  --accent: #8B5A2B;
+  --accent-hover: #6F4520;
+  --accent-soft: #C9A87C;
+  --border: #E0D3BD;
+  --ring: rgba(139, 90, 43, 0.2);
 }
 
 .dark {
-  --background: #0a0a0f;
-  --foreground: #e2e8f0;
+  --bg: #1A1410;
+  --bg-elevated: #241B14;
+  --bg-muted: #2E2419;
+  --fg: #F2E8D8;
+  --fg-muted: #B8A48C;
+  --fg-subtle: #7A6A55;
+  --accent: #D4A574;
+  --accent-hover: #E5BC8E;
+  --accent-soft: #8B5A2B;
+  --border: #3D2F22;
+  --ring: rgba(212, 165, 116, 0.2);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-bg-muted: var(--bg-muted);
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
   --font-sans: var(--font-inter);
+  --font-serif: var(--font-fraunces);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-feature-settings: "ss01", "cv11";
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: var(--bg);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #3b82f6;
-  border-radius: 3px;
+  background: var(--accent-soft);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #2563eb;
+  background: var(--accent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
