@@ -10,7 +10,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[calc(100vh-5rem)] flex flex-col pt-24 overflow-hidden"
+      className="relative min-h-screen h-screen flex flex-col pt-24 overflow-hidden"
     >
       <DecorCircles />
 
