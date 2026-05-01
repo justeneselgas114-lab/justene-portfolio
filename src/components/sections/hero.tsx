@@ -43,8 +43,8 @@ export function Hero() {
           </div>
 
           {/* CENTER PHOTO */}
-          <div className="order-1 lg:order-2 flex justify-center">
-            <div className="relative aspect-[2/3] w-full max-w-md">
+          <div className="order-1 lg:order-2 flex justify-center lg:items-end lg:self-end">
+            <div className="relative aspect-[2/3] w-full max-w-md lg:mb-[-4.5rem]">
               <Image
                 src="/profile.png"
                 alt="Justene Selgas"
