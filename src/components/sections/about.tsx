@@ -1,12 +1,18 @@
 import { MapPin, Mail, Briefcase, User } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
-import { StatCounter } from "@/components/ui/stat-counter";
 
 const infoItems = [
   { icon: User, label: "Name", value: "Justene Selgas" },
   { icon: MapPin, label: "Location", value: "Davao City, Philippines" },
   { icon: Mail, label: "Email", value: "theconceptlogin@gmail.com" },
   { icon: Briefcase, label: "Freelance", value: "Available" },
+];
+
+const outcomes = [
+  { metric: "200%", label: "more discovery calls", project: "OrquestraPH" },
+  { metric: "60%", label: "reservations through site", project: "Ally's Buffet" },
+  { metric: "150%", label: "more inquiries", project: "NAPMI" },
+  { metric: "45%", label: "higher lead conversion", project: "AI Receptionist" },
 ];
 
 export function About() {
@@ -40,43 +46,52 @@ export function About() {
             </div>
 
             <p className="font-sans text-base text-fg-muted leading-relaxed mb-4">
-              I&apos;m Justene, a Claude Code AI Specialist and Automation Expert based in Davao City,
-              Philippines. I build intelligent workflows with n8n, GoHighLevel, and Make — and craft
-              modern web experiences powered by AI-first development using Claude Code.
+              I help businesses stop losing leads, automate manual work, and ship modern web tools — without hiring a 5-person team.
             </p>
             <p className="font-sans text-base text-fg-muted leading-relaxed">
-              From designing MCP server architectures to shipping production websites, I bridge the gap
-              between automation and software engineering. I help businesses streamline their operations
-              through smart automations while building pixel-perfect, high-performance web applications.
+              I&apos;ve shipped 9 production AI workflows (lead scoring, voice AI, receipt OCR) and 3 conversion-focused websites. From discovery to deployment — one developer, one invoice.
             </p>
           </Reveal>
 
           <Reveal delay={0.2}>
-            <div className="grid grid-cols-2 gap-6">
-              <StatCounter target={15} label="Projects Completed" />
-              <StatCounter target={30} label="Workflows Built" />
-              <StatCounter target={20} label="Technologies" />
-              <StatCounter target={10} label="Clients Served" />
+            {/* Real client outcomes — replaces vanity stats */}
+            <div className="grid grid-cols-2 gap-4">
+              {outcomes.map((o) => (
+                <div
+                  key={o.project}
+                  className="p-5 rounded-xl bg-bg-elevated border border-border hover:border-accent/40 transition-colors"
+                >
+                  <div className="font-serif text-4xl lg:text-5xl text-accent font-light leading-none">
+                    {o.metric}
+                  </div>
+                  <p className="font-sans text-sm text-fg mt-2 leading-snug">
+                    {o.label}
+                  </p>
+                  <p className="font-mono text-xs text-fg-subtle mt-2">
+                    — {o.project}
+                  </p>
+                </div>
+              ))}
             </div>
 
             <div className="mt-10 p-6 rounded-xl bg-bg-elevated border-l-4 border-accent">
               <h4 className="font-serif text-xl text-fg mb-3">What I Do Best</h4>
               <ul className="space-y-2 font-sans text-sm text-fg-muted">
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                  AI-powered development with Claude Code &amp; MCP Servers
+                <li className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
+                  Capture every lead 24/7 — instant AI voice + SMS routing
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                  Business automation with n8n, GHL &amp; Make
+                <li className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
+                  Replace 10+ hrs/week of manual sales follow-up
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                  Modern web development with React &amp; Next.js
+                <li className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
+                  Ship high-converting websites in 2 weeks
                 </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-                  End-to-end project delivery from design to deployment
+                <li className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
+                  Design → build → deploy. No agency handoff fees.
                 </li>
               </ul>
             </div>

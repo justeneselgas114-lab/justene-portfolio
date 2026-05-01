@@ -21,7 +21,7 @@ export function WorkGrid({ type }: WorkGridProps) {
             Featured Projects
           </h2>
           <p className="font-sans text-base text-fg-muted max-w-xl mx-auto">
-            Automation systems and web applications I&apos;ve designed, built, and shipped.
+            12 production projects. Real clients. Measurable outcomes.
           </p>
         </Reveal>
 

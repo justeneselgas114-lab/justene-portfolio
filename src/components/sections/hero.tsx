@@ -31,13 +31,13 @@ export function Hero() {
               <span className="text-accent">Justene</span>
             </h1>
             <p className="font-sans text-lg lg:text-xl text-fg-muted mt-6 whitespace-nowrap">
-              AI Specialist &amp; Automation Expert
+              AI Automation Engineer · n8n + Claude Code
             </p>
             <div className="mt-3 inline-flex items-center gap-2 font-mono text-xs text-fg-subtle">
               <span className="relative inline-flex">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 status-dot text-emerald-500" />
               </span>
-              <span>available for new projects</span>
+              <span>available · 2 slots open this quarter</span>
             </div>
             <Button asChild size="lg" className="mt-8 group">
               <a
@@ -47,7 +47,7 @@ export function Hero() {
                   document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
                 }}
               >
-                Hire Me
+                Book a free audit
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
               </a>
             </Button>
@@ -70,13 +70,13 @@ export function Hero() {
           {/* RIGHT */}
           <div className="order-3 lg:order-3 lg:col-start-3 lg:pl-4 max-w-xs lg:max-w-none">
             <p className="font-mono text-xs text-accent mb-3">
-              &gt; expert_on
+              &gt; what_i_build
             </p>
             <p className="font-serif text-2xl lg:text-3xl text-fg leading-snug">
-              Based in Davao City, I build AI workflows and modern web experiences.
+              I build AI systems that capture, qualify, and close leads — 24/7, on autopilot.
             </p>
             <p className="font-sans text-base text-fg-muted leading-relaxed mt-5 max-w-sm">
-              Looking for someone to automate your business and grow faster? Let&apos;s build something together.
+              Trusted by Philippine agencies, restaurants, and education institutes. n8n workflows to production websites — shipped end-to-end, no handoffs.
             </p>
             <a
               href="/cv-justene-selgas.pdf"
