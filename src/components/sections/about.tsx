@@ -11,7 +11,7 @@ const infoItems = [
 
 export function About() {
   return (
-    <section id="about" className="py-24 bg-bg-muted/40">
+    <section id="about" className="py-24 bg-bg-muted">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal className="text-center mb-16">
           <p className="font-sans text-xs uppercase tracking-[0.2em] text-accent font-medium mb-3">

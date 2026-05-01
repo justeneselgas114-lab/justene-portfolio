@@ -10,11 +10,12 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-[calc(100vh-5rem)] flex items-center pt-24 pb-12 overflow-hidden"
+      className="relative min-h-[calc(100vh-5rem)] flex flex-col pt-24 overflow-hidden"
     >
       <DecorCircles />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+      {/* Inner content fills remaining space, vertically centered */}
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col justify-center">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,1.2fr)_1fr] gap-8 lg:gap-12 items-center">
           {/* LEFT */}
           <div className="order-2 lg:order-1">
@@ -42,22 +43,22 @@ export function Hero() {
             </Button>
           </div>
 
-          {/* CENTER PHOTO */}
-          <div className="order-1 lg:order-2 flex justify-center lg:items-end lg:self-end">
-            <div className="relative aspect-[2/3] w-full max-w-md lg:mb-[-4.5rem]">
+          {/* CENTER - mobile inline photo (hidden on desktop; desktop photo is absolute below) */}
+          <div className="order-1 lg:order-2 flex justify-center lg:hidden">
+            <div className="relative aspect-[2/3] w-full max-w-md">
               <Image
                 src="/profile.png"
                 alt="Justene Selgas"
                 fill
                 priority
-                sizes="(max-width: 768px) 90vw, 40vw"
+                sizes="90vw"
                 className="object-contain object-bottom"
               />
             </div>
           </div>
 
           {/* RIGHT */}
-          <div className="order-3 lg:order-3">
+          <div className="order-3 lg:order-3 lg:col-start-3">
             <p className="font-sans text-xs uppercase tracking-[0.2em] text-accent font-medium">
               Expert on
             </p>
@@ -77,9 +78,23 @@ export function Hero() {
             </a>
           </div>
         </div>
+      </div>
 
-        {/* Bottom strip */}
-        <div className="hidden lg:flex items-center justify-between mt-16 pt-6 border-t border-border">
+      {/* Desktop photo — absolute, anchored to section bottom-center */}
+      <div className="hidden lg:block absolute bottom-0 left-1/2 -translate-x-1/2 w-[42vw] max-w-2xl aspect-[2/3] z-10 pointer-events-none">
+        <Image
+          src="/profile.png"
+          alt="Justene Selgas"
+          fill
+          priority
+          sizes="42vw"
+          className="object-contain object-bottom"
+        />
+      </div>
+
+      {/* Bottom strip — sits at section bottom in flow, on top of photo */}
+      <div className="hidden lg:block relative z-20 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 pb-6">
+        <div className="flex items-center justify-between pt-6 border-t border-border">
           <a
             href="mailto:theconceptlogin@gmail.com"
             className="flex items-center gap-2 text-sm text-fg-muted hover:text-accent transition-colors"
