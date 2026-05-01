@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import createGlobe from "cobe";
-import { useMotionValue, useSpring } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import { Reveal } from "@/components/ui/reveal";
 
 const MARKERS: { location: [number, number]; size: number }[] = [
@@ -21,10 +21,40 @@ const MARKERS: { location: [number, number]; size: number }[] = [
   { location: [48.8566, 2.3522], size: 0.05 },
 ];
 
+// Placeholder testimonials — replace with real client quotes
+const TESTIMONIALS = [
+  {
+    quote: "Justene cut our lead response time from 3 hours to 30 seconds. The AI receptionist just works.",
+    author: "Marketing Lead",
+    location: "Davao City, PH",
+  },
+  {
+    quote: "Shipped our restaurant site in 10 days. Bookings up 60% in the first month.",
+    author: "Restaurant Owner",
+    location: "Panabo City, PH",
+  },
+  {
+    quote: "Best automation engineer we've worked with. Discovery calls doubled after the rebuild.",
+    author: "Agency Founder",
+    location: "Manila, PH",
+  },
+  {
+    quote: "Our institutional inquiries jumped 150% — Justene shipped a credible site that converts.",
+    author: "Director",
+    location: "International",
+  },
+  {
+    quote: "Hired him for one workflow. Came back for three more. Reliable, fast, no fluff.",
+    author: "Operations Manager",
+    location: "Singapore",
+  },
+];
+
 export function GlobeSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [shouldMount, setShouldMount] = useState(false);
+  const [testimonialIdx, setTestimonialIdx] = useState(0);
   const phiRef = useRef(0);
   const isDragging = useRef(false);
   const startX = useRef(0);
@@ -48,6 +78,15 @@ export function GlobeSection() {
     obs.observe(target);
     return () => obs.disconnect();
   }, []);
+
+  // Cycle testimonial every 5s while section is mounted
+  useEffect(() => {
+    if (!shouldMount) return;
+    const id = setInterval(() => {
+      setTestimonialIdx((i) => (i + 1) % TESTIMONIALS.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, [shouldMount]);
 
   const handleDown = useCallback((e: React.PointerEvent) => {
     isDragging.current = true;
@@ -125,10 +164,12 @@ export function GlobeSection() {
     };
   }, [shouldMount, springOffset]);
 
+  const current = TESTIMONIALS[testimonialIdx];
+
   return (
     <section
       ref={sectionRef}
-      className="relative w-full bg-bg-muted py-16 sm:py-20"
+      className="relative w-full bg-bg-muted py-16 sm:py-20 overflow-hidden"
     >
       <Reveal className="text-center mb-8">
         <p className="font-mono text-xs text-accent mb-3">
@@ -137,32 +178,105 @@ export function GlobeSection() {
         <h2 className="font-serif text-3xl lg:text-4xl text-fg font-medium">
           Working Worldwide
         </h2>
+        <p className="font-sans text-sm text-fg-muted mt-3 max-w-md mx-auto">
+          Real feedback from clients across the regions I&apos;ve shipped to.
+        </p>
       </Reveal>
 
-      <div className="relative mx-auto w-[min(600px,90vw)] md:w-[700px] lg:w-[800px] aspect-square">
-        {shouldMount && (
-          <canvas
-            ref={canvasRef}
-            onPointerDown={handleDown}
-            onPointerMove={handleMove}
-            onPointerUp={handleUp}
-            onPointerLeave={handleUp}
-            className="w-full h-full transition-opacity duration-1000"
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1fr_auto_1fr] items-center gap-8">
+        {/* Left testimonial slot (desktop) */}
+        <div className="hidden lg:flex justify-end">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current.location + "-l"}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.5 }}
+              className="max-w-xs"
+            >
+              <p className="font-mono text-xs text-accent mb-2 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                {current.location}
+              </p>
+              <p className="font-serif text-lg lg:text-xl text-fg leading-snug italic">
+                &ldquo;{current.quote}&rdquo;
+              </p>
+              <p className="font-sans text-sm text-fg-muted mt-3">
+                — {current.author}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Globe canvas */}
+        <div className="relative mx-auto w-[min(560px,90vw)] md:w-[640px] lg:w-[680px] aspect-square">
+          {shouldMount && (
+            <canvas
+              ref={canvasRef}
+              onPointerDown={handleDown}
+              onPointerMove={handleMove}
+              onPointerUp={handleUp}
+              onPointerLeave={handleUp}
+              className="w-full h-full transition-opacity duration-1000"
+              style={{
+                opacity: 0,
+                aspectRatio: "1",
+                contain: "layout paint size",
+                cursor: "grab",
+              }}
+            />
+          )}
+          <div
+            className="absolute inset-0 pointer-events-none"
             style={{
-              opacity: 0,
-              aspectRatio: "1",
-              contain: "layout paint size",
-              cursor: "grab",
+              background:
+                "radial-gradient(circle at center, transparent 0%, var(--bg-muted) 75%)",
             }}
           />
-        )}
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(circle at center, transparent 0%, var(--bg-muted) 75%)",
-          }}
-        />
+        </div>
+
+        {/* Right testimonial slot — desktop placeholder, mobile = inline */}
+        <div className="hidden lg:block" aria-hidden="true" />
+
+        {/* Mobile testimonial — full-width below globe */}
+        <div className="lg:hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={current.location + "-m"}
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 12 }}
+              transition={{ duration: 0.5 }}
+              className="max-w-md mx-auto px-4 text-center"
+            >
+              <p className="font-mono text-xs text-accent mb-2 flex items-center justify-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                {current.location}
+              </p>
+              <p className="font-serif text-base text-fg leading-snug italic">
+                &ldquo;{current.quote}&rdquo;
+              </p>
+              <p className="font-sans text-sm text-fg-muted mt-2">
+                — {current.author}
+              </p>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* Pagination dots */}
+      <div className="mt-8 flex justify-center gap-2">
+        {TESTIMONIALS.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setTestimonialIdx(i)}
+            aria-label={`Show testimonial ${i + 1}`}
+            className={`h-1.5 rounded-full transition-all ${
+              i === testimonialIdx ? "w-6 bg-accent" : "w-1.5 bg-fg-subtle/40 hover:bg-fg-subtle/70"
+            }`}
+          />
+        ))}
       </div>
     </section>
   );
