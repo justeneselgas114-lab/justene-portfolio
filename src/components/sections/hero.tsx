@@ -80,14 +80,14 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Desktop photo — absolute, anchored to section bottom-center */}
-      <div className="hidden lg:block absolute bottom-0 left-1/2 -translate-x-1/2 w-[32vw] max-w-md aspect-square z-10 pointer-events-none">
+      {/* Desktop photo — absolute, fills hero center top-to-bottom */}
+      <div className="hidden lg:block absolute inset-y-0 left-1/2 -translate-x-1/2 h-full aspect-square z-10 pointer-events-none">
         <Image
           src="/profile.png"
           alt="Justene Selgas"
           fill
           priority
-          sizes="32vw"
+          sizes="(min-width: 1024px) 50vw, 90vw"
           className="object-contain object-bottom"
         />
       </div>
