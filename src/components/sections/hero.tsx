@@ -91,7 +91,7 @@ export function Hero() {
       </div>
 
       {/* Desktop photo — absolute, anchored to section bottom (cut hides in About transition) */}
-      <div className="hidden lg:block absolute bottom-0 left-1/2 -translate-x-1/2 w-[34vw] max-w-[33rem] aspect-[2/3] z-10 pointer-events-none">
+      <div className="hidden lg:block absolute bottom-0 left-1/2 -translate-x-1/2 h-[88vh] aspect-[2/3] z-10 pointer-events-none">
         <Image
           src="/profile.png"
           alt="Justene Selgas"
