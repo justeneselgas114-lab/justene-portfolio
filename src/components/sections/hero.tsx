@@ -80,13 +80,13 @@ export function Hero() {
       </div>
 
       {/* Desktop photo — absolute, anchored to section bottom (cut hides in About transition) */}
-      <div className="hidden lg:block absolute bottom-0 left-1/2 -translate-x-1/2 w-[42vw] max-w-2xl aspect-[2/3] z-10 pointer-events-none">
+      <div className="hidden lg:block absolute bottom-0 left-1/2 -translate-x-1/2 w-[38vw] max-w-[37rem] aspect-[2/3] z-10 pointer-events-none">
         <Image
           src="/profile.png"
           alt="Justene Selgas"
           fill
           priority
-          sizes="(min-width: 1024px) 42vw, 90vw"
+          sizes="(min-width: 1024px) 38vw, 90vw"
           className="object-contain object-bottom"
         />
       </div>
