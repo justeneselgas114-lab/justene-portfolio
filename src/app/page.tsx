@@ -1,33 +1,34 @@
-"use client";
+import { Header } from "@/components/site/header";
+import { Footer } from "@/components/site/footer";
+import { Hero } from "@/components/sections/hero";
+import { About } from "@/components/sections/about";
+import { Skills } from "@/components/sections/skills";
+import { WorkGrid } from "@/components/sections/work-grid";
+import { GlobeSection } from "@/components/sections/globe-section";
+import { Contact } from "@/components/sections/contact";
+import type { WorkType } from "@/lib/data/work";
 
-import Navbar from "@/components/navbar";
-import Hero from "@/components/hero";
-import About from "@/components/about";
-import Skills from "@/components/skills";
-import Automations from "@/components/automations";
-import WebProjects from "@/components/webprojects";
-import Contact from "@/components/contact";
-import Footer from "@/components/footer";
-import Globe from "@/components/globe";
-import CursorEffect from "@/components/cursor-effect";
-import AnimatedBackground from "@/components/animated-background";
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ type?: string }>;
+}) {
+  const { type } = await searchParams;
+  const validType: WorkType | undefined =
+    type === "automation" || type === "web" ? type : undefined;
 
-export default function Home() {
   return (
-    <div className="relative bg-white dark:bg-[#0a0a0f]">
-      <AnimatedBackground />
-      <CursorEffect />
-      <Navbar />
-      <main className="relative z-10">
+    <>
+      <Header />
+      <main className="relative">
         <Hero />
         <About />
         <Skills />
-        <Automations />
-        <WebProjects />
+        <WorkGrid type={validType} />
+        <GlobeSection />
         <Contact />
       </main>
-      <Globe />
       <Footer />
-    </div>
+    </>
   );
 }
