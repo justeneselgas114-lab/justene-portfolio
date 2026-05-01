@@ -54,10 +54,10 @@ export function Header() {
               Justene<span className="text-fg">.</span>
             </Link>
             <a
-              href="mailto:theconceptlogin@gmail.com"
+              href="mailto:justene.dev@gmail.com"
               className="hidden md:inline text-sm text-fg-muted hover:text-accent transition-colors"
             >
-              theconceptlogin@gmail.com
+              justene.dev@gmail.com
             </a>
           </div>
 

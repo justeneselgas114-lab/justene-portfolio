@@ -4,7 +4,7 @@ import { Reveal } from "@/components/ui/reveal";
 const infoItems = [
   { icon: User, label: "Name", value: "Justene Selgas" },
   { icon: MapPin, label: "Location", value: "Davao City, Philippines" },
-  { icon: Mail, label: "Email", value: "theconceptlogin@gmail.com" },
+  { icon: Mail, label: "Email", value: "justene.dev@gmail.com" },
   { icon: Briefcase, label: "Freelance", value: "Available" },
 ];
 

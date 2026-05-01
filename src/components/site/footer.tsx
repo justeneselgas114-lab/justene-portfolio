@@ -1,5 +1,5 @@
 import { Mail } from "lucide-react";
-import { FaLinkedinIn, FaFacebookF, FaWhatsapp } from "react-icons/fa";
+import { FaLinkedinIn, FaFacebookF, FaWhatsapp, FaInstagram } from "react-icons/fa";
 
 export function Footer() {
   return (
@@ -10,13 +10,16 @@ export function Footer() {
             © {new Date().getFullYear()} Justene. Built with Claude Code.
           </p>
           <div className="flex items-center gap-2">
-            <FooterLink href="https://www.linkedin.com/in/justene-selgas-152052377/" label="LinkedIn">
+            <FooterLink href="https://www.linkedin.com/in/justene-selgas-152052377/?skipRedirect=true" label="LinkedIn">
               <FaLinkedinIn size={16} />
             </FooterLink>
             <FooterLink href="https://www.facebook.com/Just10AiAutomation/" label="Facebook">
               <FaFacebookF size={16} />
             </FooterLink>
-            <FooterLink href="mailto:theconceptlogin@gmail.com" label="Email">
+            <FooterLink href="#" label="Instagram (coming soon)">
+              <FaInstagram size={16} />
+            </FooterLink>
+            <FooterLink href="mailto:justene.dev@gmail.com" label="Email">
               <Mail size={16} />
             </FooterLink>
             <FooterLink href="https://wa.me/639638296973" label="WhatsApp">

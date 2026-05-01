@@ -42,7 +42,7 @@ export async function submitContact(
     const resend = new Resend(apiKey);
     await resend.emails.send({
       from: process.env.RESEND_FROM ?? "onboarding@resend.dev",
-      to: "theconceptlogin@gmail.com",
+      to: "justene.dev@gmail.com",
       replyTo: parsed.data.email,
       subject: `Portfolio inquiry from ${parsed.data.name}`,
       text: `From: ${parsed.data.name} <${parsed.data.email}>\n\n${parsed.data.message}`,

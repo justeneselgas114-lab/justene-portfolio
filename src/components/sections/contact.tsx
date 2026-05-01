@@ -1,5 +1,5 @@
 import { Mail } from "lucide-react";
-import { FaWhatsapp, FaLinkedinIn } from "react-icons/fa";
+import { FaWhatsapp, FaLinkedinIn, FaFacebookF, FaInstagram } from "react-icons/fa";
 import { Reveal } from "@/components/ui/reveal";
 import { ContactForm } from "@/components/contact/contact-form";
 import { BookCallButton } from "@/components/contact/book-call-button";
@@ -47,17 +47,26 @@ export function Contact() {
                 Direct contact
               </p>
               <ul className="space-y-3">
-                <ContactRow href="mailto:theconceptlogin@gmail.com" icon={<Mail size={16} />}>
-                  theconceptlogin@gmail.com
+                <ContactRow href="mailto:justene.dev@gmail.com" icon={<Mail size={16} />}>
+                  justene.dev@gmail.com
                 </ContactRow>
                 <ContactRow href="https://wa.me/639638296973" icon={<FaWhatsapp size={16} />}>
-                  +63 963 829 6973 (WhatsApp)
+                  09638296973 (WhatsApp)
                 </ContactRow>
                 <ContactRow
-                  href="https://www.linkedin.com/in/justene-selgas-152052377/"
+                  href="https://www.facebook.com/Just10AiAutomation/"
+                  icon={<FaFacebookF size={16} />}
+                >
+                  Facebook
+                </ContactRow>
+                <ContactRow
+                  href="https://www.linkedin.com/in/justene-selgas-152052377/?skipRedirect=true"
                   icon={<FaLinkedinIn size={16} />}
                 >
                   LinkedIn
+                </ContactRow>
+                <ContactRow href="#" icon={<FaInstagram size={16} />}>
+                  Instagram (coming soon)
                 </ContactRow>
               </ul>
             </div>

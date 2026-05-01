@@ -23,9 +23,11 @@ Real outcomes:
 Currently available — 2 slots open this quarter.
 
 Contact:
-- Email: theconceptlogin@gmail.com
-- WhatsApp: +63 963 829 6973
-- LinkedIn: justene-selgas-152052377
+- Email: justene.dev@gmail.com
+- WhatsApp: 09638296973 (PH local) / wa.me/639638296973 (international)
+- Facebook: facebook.com/Just10AiAutomation
+- LinkedIn: linkedin.com/in/justene-selgas-152052377
+- Instagram: coming soon
 - Direct booking: scroll to Contact section on the site
 
 Your job:
@@ -66,7 +68,7 @@ export async function chat(
   if (!apiKey) {
     return {
       ok: false,
-      error: "AI assistant not yet configured. For now, please email theconceptlogin@gmail.com or use the contact form below.",
+      error: "AI assistant not yet configured. For now, please email justene.dev@gmail.com or use the contact form below.",
     };
   }
 
@@ -97,7 +99,7 @@ export async function chat(
     console.error("chat action failed", err);
     return {
       ok: false,
-      error: "Something went wrong. Please email theconceptlogin@gmail.com directly.",
+      error: "Something went wrong. Please email justene.dev@gmail.com directly.",
     };
   }
 }
