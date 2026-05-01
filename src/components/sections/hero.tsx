@@ -23,14 +23,14 @@ export function Hero() {
               <span>$</span>
               <span className="inline-block w-1.5 h-3.5 bg-accent animate-pulse" aria-hidden="true" />
             </p>
-            <p className="font-serif italic text-4xl lg:text-5xl text-fg font-light leading-tight">
+            <p className="font-serif italic text-5xl lg:text-6xl text-fg font-light leading-tight">
               Hi,
             </p>
-            <h1 className="font-serif italic text-5xl lg:text-6xl font-light leading-tight mt-2 whitespace-nowrap">
+            <h1 className="font-serif italic text-6xl lg:text-7xl font-light leading-tight mt-2 whitespace-nowrap">
               <span className="text-fg">I&apos;m </span>
               <span className="text-accent">Justene</span>
             </h1>
-            <p className="font-sans text-base lg:text-lg text-fg-muted mt-6 whitespace-nowrap">
+            <p className="font-sans text-lg lg:text-xl text-fg-muted mt-6 whitespace-nowrap">
               AI Specialist &amp; Automation Expert
             </p>
             <div className="mt-3 inline-flex items-center gap-2 font-mono text-xs text-fg-subtle">
@@ -72,19 +72,19 @@ export function Hero() {
             <p className="font-mono text-xs text-accent mb-3">
               &gt; expert_on
             </p>
-            <p className="font-serif text-xl lg:text-2xl text-fg leading-snug">
+            <p className="font-serif text-2xl lg:text-3xl text-fg leading-snug">
               Based in Davao City, I build AI workflows and modern web experiences.
             </p>
-            <p className="font-sans text-sm text-fg-muted leading-relaxed mt-5 max-w-xs">
+            <p className="font-sans text-base text-fg-muted leading-relaxed mt-5 max-w-sm">
               Looking for someone to automate your business and grow faster? Let&apos;s build something together.
             </p>
             <a
               href="/cv-justene-selgas.pdf"
               download
-              className="inline-flex items-center gap-2 mt-6 font-mono text-xs text-accent hover:text-accent-hover underline underline-offset-4"
+              className="inline-flex items-center gap-2 mt-6 font-sans text-sm text-accent hover:text-accent-hover underline underline-offset-4"
             >
-              <span>./cv.pdf</span>
-              <Download size={12} />
+              Download my CV
+              <Download size={14} />
             </a>
           </div>
         </div>
