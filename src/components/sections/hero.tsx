@@ -9,7 +9,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen h-screen flex flex-col pt-24 overflow-hidden bg-grid-dots"
+      className="relative min-h-screen lg:h-screen flex flex-col pt-24 pb-12 lg:pb-0 overflow-hidden bg-grid-dots"
     >
       <DecorCircles />
 
@@ -23,10 +23,10 @@ export function Hero() {
               <span>$</span>
               <span className="inline-block w-1.5 h-3.5 bg-accent animate-pulse" aria-hidden="true" />
             </p>
-            <p className="font-serif italic text-5xl lg:text-6xl text-fg font-light leading-tight">
+            <p className="font-serif italic text-4xl sm:text-5xl lg:text-6xl text-fg font-light leading-tight">
               Hi,
             </p>
-            <h1 className="font-serif italic text-6xl lg:text-7xl font-light leading-tight mt-2 whitespace-nowrap">
+            <h1 className="font-serif italic text-5xl sm:text-6xl lg:text-7xl font-light leading-tight mt-2 lg:whitespace-nowrap">
               <span className="text-fg">I&apos;m </span>
               <span className="text-accent">Justene</span>
             </h1>
@@ -55,13 +55,13 @@ export function Hero() {
 
           {/* CENTER - mobile inline photo (hidden on desktop; desktop photo is absolute below) */}
           <div className="order-1 lg:order-2 flex justify-center lg:hidden">
-            <div className="relative aspect-[2/3] w-full max-w-sm">
+            <div className="relative aspect-[3/4] w-full max-w-[18rem] sm:max-w-xs">
               <Image
                 src="/profile-v2.png"
                 alt="Justene Selgas"
                 fill
                 priority
-                sizes="90vw"
+                sizes="80vw"
                 className="object-contain object-bottom"
               />
             </div>

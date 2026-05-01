@@ -64,10 +64,10 @@ export function AgentButton() {
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? "Close chat" : "Open chat with Justene's AI assistant"}
         className={cn(
-          "fixed bottom-6 right-6 z-[60] flex items-center bg-accent text-bg shadow-lg shadow-accent/30 transition-all hover:scale-[1.03] hover:bg-accent-hover",
+          "fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-[60] flex items-center bg-accent text-bg shadow-lg shadow-accent/30 transition-all hover:scale-[1.03] hover:bg-accent-hover",
           open
             ? "h-14 w-14 rounded-full justify-center"
-            : "h-14 pl-4 pr-5 rounded-full gap-2.5 group"
+            : "h-14 w-14 sm:w-auto sm:pl-4 sm:pr-5 rounded-full justify-center sm:gap-2.5 group"
         )}
       >
         {open ? (
@@ -78,7 +78,7 @@ export function AgentButton() {
               <Bot size={22} />
               <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-400 ring-2 ring-accent" />
             </span>
-            <span className="font-sans text-sm font-medium whitespace-nowrap">Ask my AI</span>
+            <span className="hidden sm:inline font-sans text-sm font-medium whitespace-nowrap">Ask my AI</span>
           </>
         )}
       </button>
