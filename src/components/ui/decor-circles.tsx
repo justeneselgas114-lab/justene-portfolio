@@ -1,5 +1,10 @@
 import { cn } from "@/lib/utils";
 
+/**
+ * Static decorative circles. Renders as `position: absolute; inset: 0`,
+ * so the **parent must be `position: relative`** (or other positioned
+ * context) for the circles to anchor correctly.
+ */
 export function DecorCircles({ className }: { className?: string }) {
   return (
     <div
