@@ -15,7 +15,7 @@ export function Hero() {
 
       {/* Inner content fills remaining space, vertically centered */}
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col justify-center">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,2fr)_1fr] gap-8 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,1.7fr)_1.2fr] gap-8 lg:gap-12 items-center">
           {/* LEFT */}
           <div className="order-2 lg:order-1">
             <p className="font-mono text-xs text-fg-subtle mb-4 flex items-center gap-2">
@@ -30,7 +30,7 @@ export function Hero() {
               <span className="text-fg">I&apos;m </span>
               <span className="text-accent">Justene</span>
             </h1>
-            <p className="font-sans text-lg lg:text-xl text-fg-muted mt-6 whitespace-nowrap">
+            <p className="font-sans text-lg lg:text-xl text-fg-muted mt-6">
               AI Automation Engineer · n8n + Claude Code
             </p>
             <div className="mt-3 inline-flex items-center gap-2 font-mono text-xs text-fg-subtle">
@@ -68,14 +68,14 @@ export function Hero() {
           </div>
 
           {/* RIGHT */}
-          <div className="order-3 lg:order-3 lg:col-start-3 lg:pl-4 max-w-xs lg:max-w-none">
+          <div className="order-3 lg:order-3 lg:col-start-3 max-w-sm lg:max-w-none">
             <p className="font-mono text-xs text-accent mb-3">
               &gt; what_i_build
             </p>
             <p className="font-serif text-2xl lg:text-3xl text-fg leading-snug">
               I build AI systems that capture, qualify, and close leads — 24/7, on autopilot.
             </p>
-            <p className="font-sans text-base text-fg-muted leading-relaxed mt-5 max-w-sm">
+            <p className="font-sans text-base text-fg-muted leading-relaxed mt-5">
               Trusted by Philippine agencies, restaurants, and education institutes. n8n workflows to production websites — shipped end-to-end, no handoffs.
             </p>
             <a
@@ -91,7 +91,7 @@ export function Hero() {
       </div>
 
       {/* Desktop photo — absolute, anchored to section bottom (cut hides in About transition) */}
-      <div className="hidden lg:block absolute bottom-0 left-1/2 -translate-x-1/2 w-[38vw] max-w-[37rem] aspect-[2/3] z-10 pointer-events-none">
+      <div className="hidden lg:block absolute bottom-0 left-1/2 -translate-x-1/2 w-[34vw] max-w-[33rem] aspect-[2/3] z-10 pointer-events-none">
         <Image
           src="/profile.png"
           alt="Justene Selgas"
