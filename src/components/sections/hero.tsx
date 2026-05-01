@@ -16,7 +16,7 @@ export function Hero() {
 
       {/* Inner content fills remaining space, vertically centered */}
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col justify-center">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,1.2fr)_1fr] gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,1.5fr)_1fr] gap-8 lg:gap-16 items-center">
           {/* LEFT */}
           <div className="order-2 lg:order-1">
             <p className="font-serif italic text-4xl lg:text-5xl text-fg font-light leading-tight">
@@ -81,13 +81,13 @@ export function Hero() {
       </div>
 
       {/* Desktop photo — absolute, anchored bottom-center, capped width */}
-      <div className="hidden lg:block absolute bottom-0 left-1/2 -translate-x-1/2 w-[32vw] max-w-lg aspect-square z-10 pointer-events-none">
+      <div className="hidden lg:block absolute bottom-0 left-1/2 -translate-x-1/2 w-[38vw] max-w-xl aspect-square z-10 pointer-events-none">
         <Image
           src="/profile.png"
           alt="Justene Selgas"
           fill
           priority
-          sizes="(min-width: 1024px) 32vw, 90vw"
+          sizes="(min-width: 1024px) 38vw, 90vw"
           className="object-contain object-bottom"
         />
       </div>
