@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Fraunces, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/site/theme-provider";
+import { AgentButton } from "@/components/ai-agent/agent-button";
 import { env } from "@/lib/env";
 import "./globals.css";
 
@@ -65,7 +66,10 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-bg text-fg" suppressHydrationWarning>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          {children}
+          <AgentButton />
+        </ThemeProvider>
       </body>
     </html>
   );
