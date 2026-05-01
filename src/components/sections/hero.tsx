@@ -98,8 +98,16 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Desktop photo — absolute, anchored to section bottom (cut hides in About transition) */}
-      <div className="hidden lg:block absolute bottom-0 left-1/2 -translate-x-1/2 h-[88vh] aspect-[2/3] z-10 pointer-events-none">
+      {/* Desktop photo — absolute, anchored to section bottom + gradient mask to fade cut */}
+      <div
+        className="hidden lg:block absolute bottom-0 left-1/2 -translate-x-1/2 h-[88vh] aspect-[2/3] z-10 pointer-events-none"
+        style={{
+          maskImage:
+            "linear-gradient(to bottom, black 0%, black 75%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, black 0%, black 75%, transparent 100%)",
+        }}
+      >
         <Image
           src="/profile-v2.png"
           alt="Justene Selgas"
