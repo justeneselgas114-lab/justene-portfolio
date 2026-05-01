@@ -16,7 +16,7 @@ export function Contact() {
             Let&apos;s Work Together
           </h2>
           <p className="font-sans text-base text-fg-muted max-w-xl mx-auto">
-            Tell me where your business is leaking time or leads. I&apos;ll reply within 24h with how I&apos;d solve it.
+            Tell me where your team is leaking hours. I&apos;ll reply within 24h with a workflow that fixes it.
           </p>
         </Reveal>
 

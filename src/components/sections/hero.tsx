@@ -31,7 +31,7 @@ export function Hero() {
               <span className="text-accent">Justene</span>
             </h1>
             <p className="font-sans text-lg lg:text-xl text-fg-muted mt-6">
-              AI Automation Engineer · n8n + Claude Code
+              Workflow Automation Engineer · n8n + Claude Code
             </p>
             <div className="mt-3 inline-flex items-center gap-2 font-mono text-xs text-fg-subtle">
               <span className="relative inline-flex">
@@ -81,10 +81,10 @@ export function Hero() {
               &gt; what_i_build
             </p>
             <p className="font-serif text-2xl lg:text-3xl text-fg leading-snug">
-              I build AI systems that capture, qualify, and close leads — 24/7, on autopilot.
+              I build workflows that cut hours off your team&apos;s day — and scale revenue without adding headcount.
             </p>
             <p className="font-sans text-base text-fg-muted leading-relaxed mt-5">
-              Trusted by Philippine agencies, restaurants, and education institutes. n8n workflows to production websites — shipped end-to-end, no handoffs.
+              Manual handoffs, repetitive tasks, scattered tools — I turn them into one quiet pipeline. Your team focuses on what only humans can do.
             </p>
             <a
               href="/Justene_Resume.pdf"

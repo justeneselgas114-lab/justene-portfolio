@@ -46,10 +46,10 @@ export function About() {
             </div>
 
             <p className="font-sans text-base text-fg-muted leading-relaxed mb-4">
-              I help businesses stop losing leads, automate manual work, and ship modern web tools — without hiring a 5-person team.
+              I help businesses cut time off every repetitive task — lead routing, follow-ups, invoicing, reporting, data entry — so your team scales output without scaling payroll.
             </p>
             <p className="font-sans text-base text-fg-muted leading-relaxed">
-              I&apos;ve shipped 9 production AI workflows (lead scoring, voice AI, receipt OCR) and 3 conversion-focused websites. From discovery to deployment — one developer, one invoice.
+              9 production workflows live across sales, ops, and customer service. Built with n8n, Claude Code, OpenAI, and Gemini — wired into the tools you already run (Sheets, Slack, HubSpot, Gmail, Calendar, Vapi). Engineering quality, not duct tape.
             </p>
           </Reveal>
 
@@ -79,19 +79,19 @@ export function About() {
               <ul className="space-y-2 font-sans text-sm text-fg-muted">
                 <li className="flex items-start gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
-                  Capture every lead 24/7 — instant AI voice + SMS routing
+                  Replace manual tasks with workflows that run 24/7 — no human in the loop
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
-                  Replace 10+ hrs/week of manual sales follow-up
+                  Cut response times from hours to seconds across sales, ops, and support
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
-                  Ship high-converting websites in 2 weeks
+                  Connect existing tools (Sheets, Slack, CRMs, Gmail) into one pipeline
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
-                  Design → build → deploy. No agency handoff fees.
+                  Scale output 3–5× without scaling payroll
                 </li>
               </ul>
             </div>
