@@ -16,7 +16,7 @@ export function DecorCircles({ className }: { className?: string }) {
     >
       {/* Top-right: crosshair marker */}
       <div className="absolute top-28 right-12 lg:right-24">
-        <svg width="56" height="56" viewBox="0 0 56 56" className="text-accent/60">
+        <svg width="56" height="56" viewBox="0 0 56 56" className="text-accent/70">
           <circle cx="28" cy="28" r="3" fill="currentColor" />
           <line x1="28" y1="0" x2="28" y2="18" stroke="currentColor" strokeWidth="1" />
           <line x1="28" y1="38" x2="28" y2="56" stroke="currentColor" strokeWidth="1" />
