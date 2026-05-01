@@ -17,7 +17,7 @@ export function Hero() {
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col justify-center">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_minmax(0,1.7fr)_1.2fr] gap-8 lg:gap-12 items-center">
           {/* LEFT */}
-          <div className="order-2 lg:order-1">
+          <div className="order-1 lg:order-1">
             <p className="font-mono text-xs text-fg-subtle mb-4 flex items-center gap-2">
               <span className="text-accent">~/portfolio</span>
               <span>$</span>
@@ -54,7 +54,7 @@ export function Hero() {
           </div>
 
           {/* CENTER - mobile inline photo (hidden on desktop; desktop photo is absolute below) */}
-          <div className="order-1 lg:order-2 flex justify-center lg:hidden">
+          <div className="order-3 lg:order-2 flex justify-center lg:hidden mt-6 lg:mt-0">
             <div className="relative aspect-[3/4] w-full max-w-[18rem] sm:max-w-xs">
               <Image
                 src="/profile-v2.png"
@@ -68,7 +68,7 @@ export function Hero() {
           </div>
 
           {/* RIGHT */}
-          <div className="order-3 lg:order-3 lg:col-start-3 lg:pl-12 max-w-sm lg:max-w-none">
+          <div className="order-2 lg:order-3 lg:col-start-3 lg:pl-12 max-w-sm lg:max-w-none">
             <p className="font-mono text-xs text-accent mb-3">
               &gt; what_i_build
             </p>
