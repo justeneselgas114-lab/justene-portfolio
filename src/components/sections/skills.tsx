@@ -1,13 +1,9 @@
-import {
-  Bot, Workflow, Globe, Server, GitBranch, Palette,
-  Zap, Database, Code2, Terminal, Layout, Cloud,
-  Plug, Sparkles,
-} from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
+import { BrandIcon } from "@/components/ui/brand-icon";
 
 interface Category {
   title: string;
-  icon: typeof Bot;
+  iconBrand: string;
   skills: string[];
   highlight?: boolean;
 }
@@ -15,7 +11,7 @@ interface Category {
 const categories: Category[] = [
   {
     title: "AI & Claude Code",
-    icon: Sparkles,
+    iconBrand: "claude",
     highlight: true,
     skills: [
       "Claude Code Expert",
@@ -33,7 +29,7 @@ const categories: Category[] = [
   },
   {
     title: "Workflow Automation",
-    icon: Workflow,
+    iconBrand: "n8n",
     skills: [
       "n8n (Advanced)",
       "GoHighLevel",
@@ -48,7 +44,7 @@ const categories: Category[] = [
   },
   {
     title: "Frontend",
-    icon: Layout,
+    iconBrand: "react",
     skills: [
       "React 19",
       "Next.js 16",
@@ -63,7 +59,7 @@ const categories: Category[] = [
   },
   {
     title: "Backend & Data",
-    icon: Server,
+    iconBrand: "postgresql",
     skills: [
       "Node.js",
       "Express.js",
@@ -78,7 +74,7 @@ const categories: Category[] = [
   },
   {
     title: "Integrations & Tools",
-    icon: Plug,
+    iconBrand: "slack",
     skills: [
       "Google Workspace",
       "Google Sheets API",
@@ -93,7 +89,7 @@ const categories: Category[] = [
   },
   {
     title: "DevOps & Libraries",
-    icon: GitBranch,
+    iconBrand: "github",
     skills: [
       "Git / GitHub",
       "Vercel",
@@ -109,20 +105,20 @@ const categories: Category[] = [
 ];
 
 const tools = [
-  { name: "Claude Code", icon: Sparkles },
-  { name: "MCP", icon: Bot },
-  { name: "n8n", icon: Workflow },
-  { name: "React", icon: Code2 },
-  { name: "Next.js", icon: Globe },
-  { name: "TypeScript", icon: Terminal },
-  { name: "Tailwind", icon: Palette },
-  { name: "Node.js", icon: Server },
-  { name: "PostgreSQL", icon: Database },
-  { name: "Supabase", icon: Database },
-  { name: "Vercel", icon: Cloud },
-  { name: "Git", icon: GitBranch },
-  { name: "GHL", icon: Zap },
-  { name: "Make", icon: Zap },
+  { name: "Claude Code", brand: "claude" },
+  { name: "MCP", brand: "model-context-protocol" },
+  { name: "Anthropic", brand: "anthropic" },
+  { name: "OpenAI", brand: "openai" },
+  { name: "Gemini", brand: "gemini" },
+  { name: "n8n", brand: "n8n" },
+  { name: "React", brand: "react" },
+  { name: "Next.js", brand: "nextdotjs" },
+  { name: "TypeScript", brand: "typescript" },
+  { name: "Tailwind", brand: "tailwind-css" },
+  { name: "PostgreSQL", brand: "postgresql" },
+  { name: "Supabase", brand: "supabase" },
+  { name: "Vercel", brand: "vercel" },
+  { name: "Git", brand: "git" },
 ];
 
 export function Skills() {
@@ -147,7 +143,7 @@ export function Skills() {
           <span className="text-fg-subtle">{"{"}</span>
           {tools.map((tool, i) => (
             <span key={tool.name} className="inline-flex items-center gap-1.5 text-fg-muted hover:text-accent transition-colors cursor-default">
-              <tool.icon size={12} />
+              <BrandIcon name={tool.brand} size={14} alt={tool.name} />
               <span>{tool.name}</span>
               {i < tools.length - 1 && <span className="text-fg-subtle">,</span>}
             </span>
@@ -173,11 +169,9 @@ export function Skills() {
                 )}
                 <div className="flex items-center justify-between mb-5">
                   <div className="flex items-center gap-3">
-                    <cat.icon
-                      size={22}
-                      className={cat.highlight ? "text-accent" : "text-accent"}
-                      strokeWidth={1.5}
-                    />
+                    <div className="h-10 w-10 rounded-lg bg-bg flex items-center justify-center border border-border">
+                      <BrandIcon name={cat.iconBrand} size={22} alt={cat.title} />
+                    </div>
                     <h3 className="font-serif text-xl text-fg font-medium">{cat.title}</h3>
                   </div>
                   <span className="font-mono text-xs text-fg-subtle group-hover:text-accent transition-colors">

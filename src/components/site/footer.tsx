@@ -1,5 +1,5 @@
 import { Mail } from "lucide-react";
-import { FaLinkedinIn, FaFacebookF, FaWhatsapp, FaInstagram } from "react-icons/fa";
+import { BrandIcon } from "@/components/ui/brand-icon";
 
 export function Footer() {
   return (
@@ -11,19 +11,19 @@ export function Footer() {
           </p>
           <div className="flex items-center gap-2">
             <FooterLink href="https://www.linkedin.com/in/justene-selgas-152052377/?skipRedirect=true" label="LinkedIn">
-              <FaLinkedinIn size={16} />
+              <BrandIcon name="linkedin" size={18} alt="LinkedIn" />
             </FooterLink>
             <FooterLink href="https://www.facebook.com/Just10AiAutomation/" label="Facebook">
-              <FaFacebookF size={16} />
+              <BrandIcon name="facebook" size={18} alt="Facebook" />
             </FooterLink>
             <FooterLink href="#" label="Instagram (coming soon)">
-              <FaInstagram size={16} />
+              <BrandIcon name="instagram" size={18} alt="Instagram" />
             </FooterLink>
             <FooterLink href="mailto:justene.dev@gmail.com" label="Email">
-              <Mail size={16} />
+              <Mail size={18} className="text-fg-subtle" />
             </FooterLink>
             <FooterLink href="https://wa.me/639638296973" label="WhatsApp">
-              <FaWhatsapp size={16} />
+              <BrandIcon name="whatsapp" size={18} alt="WhatsApp" />
             </FooterLink>
           </div>
         </div>
@@ -46,7 +46,7 @@ function FooterLink({
     <a
       href={href}
       aria-label={label}
-      className="p-2 rounded-lg text-fg-subtle hover:text-accent hover:bg-bg-elevated transition-all"
+      className="p-2 rounded-lg hover:bg-bg-elevated transition-all"
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
     >
       {children}
