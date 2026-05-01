@@ -55,7 +55,15 @@ export function Hero() {
 
           {/* CENTER - mobile inline photo (top of mobile stack; desktop photo is absolute below) */}
           <div className="order-1 lg:order-2 flex justify-center lg:hidden">
-            <div className="relative aspect-[2/3] w-[75vw] max-w-sm">
+            <div
+              className="relative aspect-[2/3] w-[75vw] max-w-sm"
+              style={{
+                maskImage:
+                  "linear-gradient(to bottom, black 0%, black 70%, transparent 100%)",
+                WebkitMaskImage:
+                  "linear-gradient(to bottom, black 0%, black 70%, transparent 100%)",
+              }}
+            >
               <Image
                 src="/profile-v2.png"
                 alt="Justene Selgas"
