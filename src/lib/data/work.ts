@@ -196,6 +196,7 @@ export const work: WorkDetail[] = [
       "Reps freed from manual dialing — AI handles 50+ calls per hour",
     ],
     techStack: ["n8n", "Vapi AI Voice", "Google Calendar", "Gmail", "Google Sheets", "Cron Schedule", "Webhook"],
+    featured: true,
   },
   {
     slug: "receipt-extractor",
@@ -319,3 +320,6 @@ export const getAllSlugs = (): string[] => work.map((w) => w.slug);
 
 export const getWorkByType = (type?: WorkType): WorkDetail[] =>
   type ? work.filter((w) => w.type === type) : work;
+
+export const getFeaturedWork = (): WorkDetail[] =>
+  work.filter((w) => w.featured);

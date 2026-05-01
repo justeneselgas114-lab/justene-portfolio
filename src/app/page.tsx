@@ -6,17 +6,8 @@ import { Skills } from "@/components/sections/skills";
 import { WorkGrid } from "@/components/sections/work-grid";
 import { GlobeSection } from "@/components/sections/globe-section";
 import { Contact } from "@/components/sections/contact";
-import type { WorkType } from "@/lib/data/work";
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: Promise<{ type?: string }>;
-}) {
-  const { type } = await searchParams;
-  const validType: WorkType | undefined =
-    type === "automation" || type === "web" ? type : undefined;
-
+export default function Home() {
   return (
     <>
       <Header />
@@ -24,7 +15,7 @@ export default async function Home({
         <Hero />
         <About />
         <Skills />
-        <WorkGrid type={validType} />
+        <WorkGrid />
         <GlobeSection />
         <Contact />
       </main>
