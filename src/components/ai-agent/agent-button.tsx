@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useTransition } from "react";
 import { Bot, X, Send } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { chat, type ChatMessage } from "@/app/actions/chat";
 import { cn } from "@/lib/utils";
 
@@ -23,12 +24,37 @@ export function AgentButton() {
   const [history, setHistory] = useState<ChatMessage[]>([GREETING]);
   const [input, setInput] = useState("");
   const [pending, startTransition] = useTransition();
+  const [hintVisible, setHintVisible] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (open) inputRef.current?.focus();
   }, [open]);
+
+  // Cycling notification — show 3s, hide 3s, repeat. Stops if chat opens or user dismisses.
+  useEffect(() => {
+    if (open || dismissed) {
+      setHintVisible(false);
+      return;
+    }
+    let timeoutId: ReturnType<typeof setTimeout>;
+    const intervalId = setInterval(() => {
+      setHintVisible(true);
+      timeoutId = setTimeout(() => setHintVisible(false), 3000);
+    }, 6000);
+    // First show after short initial delay
+    const firstShow = setTimeout(() => {
+      setHintVisible(true);
+      timeoutId = setTimeout(() => setHintVisible(false), 3000);
+    }, 1500);
+    return () => {
+      clearInterval(intervalId);
+      clearTimeout(timeoutId);
+      clearTimeout(firstShow);
+    };
+  }, [open, dismissed]);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -82,15 +108,43 @@ export function AgentButton() {
           </>
         )}
       </button>
-      {/* Tooltip label that pulses on first load to draw attention */}
-      {!open && (
-        <span
-          aria-hidden="true"
-          className="fixed bottom-[5.5rem] right-6 z-[59] hidden lg:block font-mono text-[10px] text-fg-subtle bg-bg-elevated border border-border rounded-md px-2 py-1 shadow-sm animate-pulse pointer-events-none"
-        >
-          ↓ ask anything
-        </span>
-      )}
+      {/* Cycling hint notification — points at AI button */}
+      <AnimatePresence>
+        {hintVisible && !open && !dismissed && (
+          <motion.div
+            key="ai-hint"
+            initial={{ opacity: 0, x: 24, scale: 0.9 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            exit={{ opacity: 0, x: 24, scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 320, damping: 26 }}
+            className="fixed bottom-7 right-24 sm:right-[10.5rem] z-[59] flex items-center gap-2"
+          >
+            <div className="relative bg-bg-elevated border border-border rounded-xl shadow-lg px-3.5 py-2.5 max-w-[200px]">
+              <p className="font-sans text-xs text-fg leading-snug">
+                You can ask my AI here
+              </p>
+              <button
+                onClick={() => setDismissed(true)}
+                aria-label="Dismiss hint"
+                className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-fg text-bg flex items-center justify-center text-[10px] hover:bg-accent transition-colors"
+              >
+                <X size={10} />
+              </button>
+              {/* Arrow pointing right toward button */}
+              <span className="absolute top-1/2 -right-2 -translate-y-1/2 w-0 h-0 border-y-[6px] border-y-transparent border-l-[8px] border-l-bg-elevated" />
+            </div>
+            {/* Animated arrow icon */}
+            <motion.span
+              animate={{ x: [0, 4, 0] }}
+              transition={{ duration: 1, repeat: Infinity, ease: "easeInOut" }}
+              className="text-accent text-lg"
+              aria-hidden="true"
+            >
+              →
+            </motion.span>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Chat panel */}
       {open && (
