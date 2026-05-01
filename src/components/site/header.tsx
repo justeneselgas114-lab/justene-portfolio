@@ -83,7 +83,7 @@ export function Header() {
               size="sm"
               className="hidden md:inline-flex"
             >
-              <a href="/cv-justene-selgas.pdf" download>
+              <a href="/Justene_Resume.pdf" download>
                 <Download size={14} />
                 Download CV
               </a>
@@ -185,7 +185,7 @@ export function Header() {
                           className="mt-auto pt-8"
                         >
                           <a
-                            href="/cv-justene-selgas.pdf"
+                            href="/Justene_Resume.pdf"
                             download
                             className="flex items-center justify-center gap-2 h-12 px-6 bg-accent text-bg rounded-xl font-medium text-sm hover:bg-accent-hover transition-colors"
                           >

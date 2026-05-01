@@ -87,7 +87,7 @@ export function Hero() {
               Trusted by Philippine agencies, restaurants, and education institutes. n8n workflows to production websites — shipped end-to-end, no handoffs.
             </p>
             <a
-              href="/cv-justene-selgas.pdf"
+              href="/Justene_Resume.pdf"
               download
               className="inline-flex items-center gap-2 mt-6 font-sans text-sm text-accent hover:text-accent-hover underline underline-offset-4"
             >
