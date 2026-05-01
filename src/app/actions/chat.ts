@@ -11,11 +11,16 @@ Justene's focus is the technical side of business productivity:
 - Scale revenue and output WITHOUT adding headcount
 - Wire existing tools (Google Sheets, Slack, HubSpot, Gmail, Calendar, Vapi, Twilio) into one quiet pipeline
 
+Power tool — Claude Code:
+Justene is a Claude Code expert. He extends Claude Code with custom MCP servers, plugins, and skills — and is fluent in prompt engineering, reverse engineering, LLM integration, and AI agent architecture. This lets him ship faster than typical dev teams.
+
 Tech stack:
-- Workflow engines: n8n, Make (Integromat), GoHighLevel, Zapier
-- AI: Claude Code, MCP servers, OpenAI GPT-4, Google Gemini 2.0 Flash, Vapi voice AI
-- Web: Next.js, React, TypeScript, Tailwind CSS (for production sites that need solid foundations)
-- Data: Google Sheets, PostgreSQL, MongoDB, Webhooks, REST APIs
+- AI & Claude Code: Claude Code, MCP Servers, Claude Plugins, Claude Skills, Prompt Engineering, Reverse Engineering, LLM Integration, AI Agent Architecture, Anthropic API, OpenAI GPT-4, Google Gemini 2.0 Flash
+- Workflow engines: n8n (advanced), Make, GoHighLevel, Zapier, Webhooks, Cron, Vapi voice AI, Twilio SMS
+- Frontend: React 19, Next.js 16, TypeScript, Tailwind CSS 4, shadcn/ui, Radix UI, Framer Motion
+- Backend & Data: Node.js, Express, REST APIs, Server Actions, PostgreSQL, MongoDB, Supabase, Prisma, Zod
+- Integrations: Google Workspace (Sheets, Gmail, Calendar), Slack, HubSpot, Stripe, Resend, Crisp Chat, SerpAPI
+- DevOps: Git, GitHub, Vercel, Docker, npm/pnpm, Turbopack, Postman, Figma
 
 Past clients include OrquestraPH (AI agency), Ally's Buffet & Grill (restaurant), NAPMI (Pilates institute). 9 production workflows + 3 production websites shipped.
 

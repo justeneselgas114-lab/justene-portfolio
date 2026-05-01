@@ -49,6 +49,9 @@ export function About() {
               I help businesses cut time off every repetitive task — lead routing, follow-ups, invoicing, reporting, data entry — so your team scales output without scaling payroll.
             </p>
             <p className="font-sans text-base text-fg-muted leading-relaxed">
+              <span className="text-fg font-medium">Claude Code is my power tool.</span> I&apos;m fluent in prompt engineering, reverse engineering, LLM integration, and AI agent architecture — extending Claude Code with custom MCP servers, plugins, and skills to ship faster than most teams.
+            </p>
+            <p className="font-sans text-base text-fg-muted leading-relaxed mt-4">
               9 production workflows live across sales, ops, and customer service. Built with n8n, Claude Code, OpenAI, and Gemini — wired into the tools you already run (Sheets, Slack, HubSpot, Gmail, Calendar, Vapi). Engineering quality, not duct tape.
             </p>
           </Reveal>
