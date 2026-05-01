@@ -90,6 +90,23 @@ export function Hero() {
         </div>
       </div>
 
+      {/* Claude burst mark — backdrop behind photo */}
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 200 200"
+        className="hidden lg:block absolute bottom-[20vh] left-1/2 -translate-x-1/2 w-[55vh] h-[55vh] text-accent/[0.10] z-[5] pointer-events-none"
+      >
+        <path
+          fill="currentColor"
+          d="M100 10 C108 86, 114 92, 190 100 C114 108, 108 114, 100 190 C92 114, 86 108, 10 100 C86 92, 92 86, 100 10 Z"
+        />
+        <path
+          fill="currentColor"
+          transform="rotate(45 100 100)"
+          d="M100 10 C108 86, 114 92, 190 100 C114 108, 108 114, 100 190 C92 114, 86 108, 10 100 C86 92, 92 86, 100 10 Z"
+        />
+      </svg>
+
       {/* Desktop photo — absolute, anchored to section bottom (cut hides in About transition) */}
       <div className="hidden lg:block absolute bottom-0 left-1/2 -translate-x-1/2 h-[88vh] aspect-[2/3] z-10 pointer-events-none">
         <Image
