@@ -42,6 +42,14 @@ export function ContactForm() {
         error={errors.email?.[0]}
       />
       <Field
+        label="Mobile number"
+        name="phone"
+        type="tel"
+        placeholder="09638296973 or +639638296973"
+        required
+        error={errors.phone?.[0]}
+      />
+      <Field
         label="Message"
         name="message"
         as="textarea"
@@ -78,10 +86,11 @@ interface FieldProps {
   rows?: number;
   required?: boolean;
   error?: string;
+  placeholder?: string;
   as?: "input" | "textarea";
 }
 
-function Field({ label, name, type = "text", rows, required, error, as = "input" }: FieldProps) {
+function Field({ label, name, type = "text", rows, required, error, placeholder, as = "input" }: FieldProps) {
   const Input = as === "textarea" ? "textarea" : "input";
   return (
     <label className="block">
@@ -94,6 +103,7 @@ function Field({ label, name, type = "text", rows, required, error, as = "input"
         type={as === "input" ? type : undefined}
         rows={as === "textarea" ? rows : undefined}
         required={required}
+        placeholder={placeholder}
         className={cn(
           "w-full bg-bg-elevated border rounded-lg px-3 py-2.5 font-sans text-base text-fg placeholder-fg-subtle",
           "focus:outline-none focus:ring-2 focus:ring-ring focus:border-accent",
