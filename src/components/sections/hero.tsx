@@ -44,7 +44,7 @@ export function Hero() {
 
           {/* CENTER - mobile inline photo (hidden on desktop; desktop photo is absolute below) */}
           <div className="order-1 lg:order-2 flex justify-center lg:hidden">
-            <div className="relative aspect-square w-full max-w-sm">
+            <div className="relative aspect-[2/3] w-full max-w-sm">
               <Image
                 src="/profile.png"
                 alt="Justene Selgas"
@@ -80,7 +80,7 @@ export function Hero() {
       </div>
 
       {/* Desktop photo — absolute, anchored to section bottom (cut hides in About transition) */}
-      <div className="hidden lg:block absolute bottom-0 left-1/2 -translate-x-1/2 w-[42vw] max-w-2xl aspect-square z-10 pointer-events-none">
+      <div className="hidden lg:block absolute bottom-0 left-1/2 -translate-x-1/2 w-[42vw] max-w-2xl aspect-[2/3] z-10 pointer-events-none">
         <Image
           src="/profile.png"
           alt="Justene Selgas"
