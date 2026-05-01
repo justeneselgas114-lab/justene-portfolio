@@ -68,7 +68,7 @@ export function Hero() {
           </div>
 
           {/* RIGHT */}
-          <div className="order-3 lg:order-3 lg:col-start-3 max-w-sm lg:max-w-none">
+          <div className="order-3 lg:order-3 lg:col-start-3 lg:pl-12 max-w-sm lg:max-w-none">
             <p className="font-mono text-xs text-accent mb-3">
               &gt; what_i_build
             </p>
