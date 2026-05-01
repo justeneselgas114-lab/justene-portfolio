@@ -58,14 +58,14 @@ export function Hero() {
           </div>
 
           {/* RIGHT */}
-          <div className="order-3 lg:order-3 lg:col-start-3">
+          <div className="order-3 lg:order-3 lg:col-start-3 lg:pl-4 max-w-xs lg:max-w-none">
             <p className="font-sans text-xs uppercase tracking-[0.2em] text-accent font-medium">
               Expert on
             </p>
-            <p className="font-serif text-2xl lg:text-3xl text-fg leading-snug mt-3">
+            <p className="font-serif text-xl lg:text-2xl text-fg leading-snug mt-3">
               Based in Davao City, I build AI workflows and modern web experiences.
             </p>
-            <p className="font-sans text-base text-fg-muted leading-relaxed mt-5 max-w-sm">
+            <p className="font-sans text-sm text-fg-muted leading-relaxed mt-5 max-w-xs">
               Looking for someone to automate your business and grow faster? Let&apos;s build something together.
             </p>
             <a
@@ -80,14 +80,14 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Desktop photo — absolute, fills hero center top-to-bottom */}
-      <div className="hidden lg:block absolute inset-y-0 left-1/2 -translate-x-1/2 h-full aspect-square z-10 pointer-events-none">
+      {/* Desktop photo — absolute, anchored bottom-center, capped width */}
+      <div className="hidden lg:block absolute bottom-0 left-1/2 -translate-x-1/2 w-[32vw] max-w-lg aspect-square z-10 pointer-events-none">
         <Image
           src="/profile.png"
           alt="Justene Selgas"
           fill
           priority
-          sizes="(min-width: 1024px) 50vw, 90vw"
+          sizes="(min-width: 1024px) 32vw, 90vw"
           className="object-contain object-bottom"
         />
       </div>
