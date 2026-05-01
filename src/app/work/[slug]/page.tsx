@@ -5,6 +5,8 @@ import { Footer } from "@/components/site/footer";
 import { WorkDetail } from "@/components/work/work-detail";
 import { getAllSlugs, getWorkBySlug, work } from "@/lib/data/work";
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
 }
