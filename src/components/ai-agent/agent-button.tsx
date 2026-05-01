@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useTransition } from "react";
-import { MessageCircle, X, Send, Sparkles } from "lucide-react";
+import { Bot, X, Send } from "lucide-react";
 import { chat, type ChatMessage } from "@/app/actions/chat";
 import { cn } from "@/lib/utils";
 
@@ -59,17 +59,38 @@ export function AgentButton() {
 
   return (
     <>
-      {/* Floating button — always visible bottom-right */}
+      {/* Floating button — pill with icon + label when closed, round X when open */}
       <button
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? "Close chat" : "Open chat with Justene's AI assistant"}
         className={cn(
-          "fixed bottom-6 right-6 z-[60] h-14 w-14 rounded-full bg-accent text-bg shadow-lg shadow-accent/30 flex items-center justify-center transition-all hover:scale-105 hover:bg-accent-hover",
-          open && "rotate-90"
+          "fixed bottom-6 right-6 z-[60] flex items-center bg-accent text-bg shadow-lg shadow-accent/30 transition-all hover:scale-[1.03] hover:bg-accent-hover",
+          open
+            ? "h-14 w-14 rounded-full justify-center"
+            : "h-14 pl-4 pr-5 rounded-full gap-2.5 group"
         )}
       >
-        {open ? <X size={22} /> : <MessageCircle size={22} />}
+        {open ? (
+          <X size={22} />
+        ) : (
+          <>
+            <span className="relative flex">
+              <Bot size={22} />
+              <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-emerald-400 ring-2 ring-accent" />
+            </span>
+            <span className="font-sans text-sm font-medium whitespace-nowrap">Ask my AI</span>
+          </>
+        )}
       </button>
+      {/* Tooltip label that pulses on first load to draw attention */}
+      {!open && (
+        <span
+          aria-hidden="true"
+          className="fixed bottom-[5.5rem] right-6 z-[59] hidden lg:block font-mono text-[10px] text-fg-subtle bg-bg-elevated border border-border rounded-md px-2 py-1 shadow-sm animate-pulse pointer-events-none"
+        >
+          ↓ ask anything
+        </span>
+      )}
 
       {/* Chat panel */}
       {open && (
@@ -81,10 +102,10 @@ export function AgentButton() {
           {/* Header */}
           <div className="px-4 py-3 border-b border-border bg-bg flex items-center gap-3">
             <div className="h-9 w-9 rounded-full bg-accent/10 flex items-center justify-center">
-              <Sparkles size={16} className="text-accent" />
+              <Bot size={18} className="text-accent" />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="font-serif text-sm text-fg font-medium leading-tight">Ask Justene&apos;s AI</p>
+              <p className="font-serif text-sm text-fg font-medium leading-tight">Justene&apos;s AI Assistant</p>
               <p className="font-mono text-[10px] text-fg-subtle leading-tight mt-0.5 flex items-center gap-1.5">
                 <span className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500" />
                 online · powered by Claude
