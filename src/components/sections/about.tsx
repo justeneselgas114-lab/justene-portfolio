@@ -82,7 +82,7 @@ export function About() {
               <ul className="space-y-2 font-sans text-sm text-fg-muted">
                 <li className="flex items-start gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />
-                  Replace manual tasks with workflows that run 24/7 — no human in the loop
+                  Replace manual tasks with systems that run 24/7 — no human in the loop
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-accent mt-2 shrink-0" />

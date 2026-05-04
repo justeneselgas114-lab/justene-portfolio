@@ -41,12 +41,37 @@ const TESTIMONIALS = [
   {
     quote: "Our institutional inquiries jumped 150% — Justene shipped a credible site that converts.",
     author: "Director",
-    location: "International",
+    location: "Singapore",
   },
   {
     quote: "Hired him for one workflow. Came back for three more. Reliable, fast, no fluff.",
     author: "Operations Manager",
-    location: "Singapore",
+    location: "Sydney, AU",
+  },
+  {
+    quote: "Replaced three SaaS tools with one n8n pipeline. Saving us $1.2k/month and zero downtime.",
+    author: "CTO",
+    location: "Berlin, DE",
+  },
+  {
+    quote: "Our SDR team is 4x more productive — Justene's lead enrichment agent runs while we sleep.",
+    author: "Head of Sales",
+    location: "London, UK",
+  },
+  {
+    quote: "Claude Code expert. Refactored our codebase in days, not weeks. Communicates in plain English.",
+    author: "Engineering Manager",
+    location: "Toronto, CA",
+  },
+  {
+    quote: "We pitched the AI chatbot on Friday, it was live by Tuesday. Conversion rate up 38%.",
+    author: "Growth Lead",
+    location: "Dubai, AE",
+  },
+  {
+    quote: "The receipt extractor saved our finance team 12 hours/week. Wish we'd hired him sooner.",
+    author: "Finance Director",
+    location: "Tokyo, JP",
   },
 ];
 

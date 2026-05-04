@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { Header } from "@/components/site/header";
 import { Footer } from "@/components/site/footer";
 import { WorkDetail } from "@/components/work/work-detail";
-import { getAllSlugs, getWorkBySlug, work } from "@/lib/data/work";
+import { getAllSlugs, getWorkBySlug } from "@/lib/data/work";
 
 export const dynamicParams = false;
 
@@ -39,14 +39,11 @@ export default async function WorkPage({
   const item = getWorkBySlug(slug);
   if (!item) notFound();
 
-  const idx = work.findIndex((w) => w.slug === slug);
-  const next = work[(idx + 1) % work.length];
-
   return (
     <>
       <Header />
       <main>
-        <WorkDetail work={item} next={next} />
+        <WorkDetail work={item} />
       </main>
       <Footer />
     </>

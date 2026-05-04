@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Fraunces, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/site/theme-provider";
+import { LoadingScreen } from "@/components/site/loading-screen";
 import { AgentButton } from "@/components/ai-agent/agent-button";
 import { env } from "@/lib/env";
 import "./globals.css";
@@ -27,11 +28,11 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_SITE_URL),
   title: {
-    default: "Justene Selgas — AI Automation Specialist",
+    default: "Justene Selgas — Junior Full-Stack Developer & Claude AI Specialist",
     template: "%s · Justene Selgas",
   },
   description:
-    "Claude Code AI Specialist and Automation Expert based in Davao City, Philippines. Building intelligent workflows with n8n, GoHighLevel, and Make — and modern web experiences with React & Next.js.",
+    "Junior Full-Stack Developer, n8n Integrations Specialist, and Claude AI Specialist based in Davao City, Philippines. Building Claude-powered AI agents, n8n automations, and modern full-stack apps with Next.js + React.",
   keywords: [
     "Claude Code",
     "AI Specialist",
@@ -67,6 +68,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-bg text-fg" suppressHydrationWarning>
         <ThemeProvider>
+          <LoadingScreen />
           {children}
           <AgentButton />
         </ThemeProvider>

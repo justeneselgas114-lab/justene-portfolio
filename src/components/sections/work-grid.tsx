@@ -120,14 +120,15 @@ function ProjectsView({ items }: { items: WorkDetail[] }) {
                 <Link
                   href={`/work/${work.slug}`}
                   prefetch
-                  className="group relative block aspect-[4/3] rounded-2xl overflow-hidden bg-bg border border-border shadow-md"
+                  className="group relative block rounded-2xl overflow-hidden bg-bg border border-border shadow-md"
                 >
                   <Image
                     src={work.thumbnail}
                     alt={work.title}
-                    fill
+                    width={work.thumbnailWidth ?? 1600}
+                    height={work.thumbnailHeight ?? 1000}
                     sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.04]"
+                    className="block w-full h-auto transition-transform duration-700 group-hover:scale-[1.04]"
                   />
                   <div className="absolute top-4 left-4 font-mono text-[10px] uppercase tracking-wider text-bg bg-fg/80 backdrop-blur px-2 py-1 rounded">
                     0{idx + 1} / Flagship

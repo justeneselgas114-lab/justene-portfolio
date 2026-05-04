@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Justene Selgas — AI Automation Specialist";
+export const alt = "Justene Selgas — Junior Full-Stack Developer & Claude AI Specialist";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -27,7 +27,7 @@ export default async function og() {
           Justene Selgas
         </h1>
         <p style={{ fontSize: 36, color: "#6B5A47", maxWidth: 900 }}>
-          AI Automation Specialist · Davao City
+          Full-Stack Dev · n8n Integrations · Claude AI Specialist
         </p>
       </div>
     ),

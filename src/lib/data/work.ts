@@ -1,5 +1,24 @@
 export type WorkType = "automation" | "web";
 
+export interface WorkAgent {
+  name: string;
+  role: string;
+  description: string;
+}
+
+export interface WorkTestimonial {
+  quote: string;
+  author: string;
+  role: string;
+  business: string;
+}
+
+export interface WorkImageGroup {
+  label: string;
+  description?: string;
+  images: string[];
+}
+
 export interface WorkDetail {
   slug: string;
   title: string;
@@ -17,6 +36,12 @@ export interface WorkDetail {
   techStack: string[];
   role?: string;
   featured?: boolean;
+  status?: string;
+  agents?: WorkAgent[];
+  testimonials?: WorkTestimonial[];
+  imageGroups?: WorkImageGroup[];
+  thumbnailWidth?: number;
+  thumbnailHeight?: number;
 }
 
 export const work: WorkDetail[] = [
@@ -27,6 +52,8 @@ export const work: WorkDetail[] = [
     shortDescription:
       "24/7 automated lead handling — intake, AI scoring, smart routing, voice calls, and logging. Qualifies every lead in seconds.",
     thumbnail: "/ai-receptionist.png",
+    thumbnailWidth: 1703,
+    thumbnailHeight: 699,
     images: ["/ai-receptionist.png"],
     tags: ["AI Agent", "Vapi", "Twilio", "Google Sheets"],
     year: 2025,
@@ -50,6 +77,8 @@ export const work: WorkDetail[] = [
     shortDescription:
       "AI agent that researches companies from a Google Sheet, finds decision makers, and suggests personalized outreach angles.",
     thumbnail: "/auto-lead-researcher.png",
+    thumbnailWidth: 1407,
+    thumbnailHeight: 723,
     images: ["/auto-lead-researcher.png"],
     tags: ["AI Agent", "OpenAI", "SerpAPI", "Google Sheets"],
     year: 2025,
@@ -72,6 +101,8 @@ export const work: WorkDetail[] = [
     shortDescription:
       "Captures buying intent from social media comments, auto-replies publicly, sends personalized DMs, and logs leads.",
     thumbnail: "/auto-social-lead.png",
+    thumbnailWidth: 1431,
+    thumbnailHeight: 601,
     images: ["/auto-social-lead.png"],
     tags: ["Facebook API", "AI Agent", "Slack", "Webhook"],
     year: 2025,
@@ -94,6 +125,8 @@ export const work: WorkDetail[] = [
     shortDescription:
       "AI-personalized 7-day email drip sequence that nurtures leads with value-driven content and tracks engagement.",
     thumbnail: "/auto-sales-followup.png",
+    thumbnailWidth: 1679,
+    thumbnailHeight: 545,
     images: ["/auto-sales-followup.png"],
     tags: ["AI Agent", "Gmail", "Google Sheets", "Slack"],
     year: 2025,
@@ -116,6 +149,8 @@ export const work: WorkDetail[] = [
     shortDescription:
       "Daily automated scan of competitor websites — AI analyzes changes and delivers structured intel reports via Slack and email.",
     thumbnail: "/auto-competitor-intel.png",
+    thumbnailWidth: 1689,
+    thumbnailHeight: 628,
     images: ["/auto-competitor-intel.png"],
     tags: ["Schedule", "AI Agent", "Slack", "Gmail"],
     year: 2025,
@@ -138,6 +173,8 @@ export const work: WorkDetail[] = [
     shortDescription:
       "24/7 multi-channel AI sales chatbot for website and social media that qualifies leads, collects contact info, and escalates to humans.",
     thumbnail: "/auto-chatbot-sales.png",
+    thumbnailWidth: 1396,
+    thumbnailHeight: 643,
     images: ["/auto-chatbot-sales.png"],
     tags: ["AI Agent", "Webhook", "Slack", "Google Sheets"],
     year: 2025,
@@ -160,6 +197,8 @@ export const work: WorkDetail[] = [
     shortDescription:
       "AI-powered lead scoring with smart routing — HOT leads get urgent alerts, WARM get follow-ups, COLD enter nurture queue.",
     thumbnail: "/auto-lead-qualification.png",
+    thumbnailWidth: 1683,
+    thumbnailHeight: 736,
     images: ["/auto-lead-qualification.png"],
     tags: ["AI Agent", "HubSpot", "Slack", "Google Sheets"],
     year: 2025,
@@ -182,6 +221,8 @@ export const work: WorkDetail[] = [
     shortDescription:
       "Automated outbound AI voice calls with smart retry logic, calendar sync, and email confirmations for every outcome.",
     thumbnail: "/auto-call-followup.png",
+    thumbnailWidth: 1099,
+    thumbnailHeight: 733,
     images: ["/auto-call-followup.png"],
     tags: ["Vapi AI", "Google Calendar", "Gmail", "Schedule"],
     year: 2025,
@@ -205,6 +246,8 @@ export const work: WorkDetail[] = [
     shortDescription:
       "Upload a receipt image or PDF — AI extracts all structured data (date, vendor, items, amounts) and saves to Google Sheets.",
     thumbnail: "/auto-receipt-extractor.png",
+    thumbnailWidth: 1311,
+    thumbnailHeight: 713,
     images: ["/auto-receipt-extractor.png"],
     tags: ["Gemini AI", "Google Sheets", "Webhook", "API"],
     year: 2025,
@@ -221,35 +264,148 @@ export const work: WorkDetail[] = [
     techStack: ["n8n", "Google Gemini 2.0 Flash", "Google Sheets", "Webhook", "File Validation"],
   },
   {
-    slug: "orquestra-ph",
-    title: "OrquestraPH — AI Automation Agency",
+    slug: "octopulse",
+    title: "Octopulse — Multi-tenant AI Ops Platform",
     type: "web",
     shortDescription:
-      "High-converting agency website for an AI automation company — pain-point storytelling, 6-step solution framework, and multi-step lead capture.",
-    thumbnail: "/orquestra-hero.png",
+      "Multi-tenant SaaS powered by a fleet of specialized AI agents that turn Facebook ads into booked appointments — answering DMs, qualifying leads, closing sales, and filling the calendar 24/7. Currently in active development with 2 paying users.",
+    thumbnail: "/octopulse/05-dashboard.png",
+    thumbnailWidth: 1440,
+    thumbnailHeight: 900,
     images: [
-      "/orquestra-hero.png",
-      "/orquestra-reality.png",
-      "/orquestra-solution.png",
-      "/orquestra-process.png",
-      "/orquestra-testimonials.png",
-      "/orquestra-audit.png",
-      "/orquestra-cta.png",
+      "/octopulse/05-dashboard.png",
+      "/octopulse/06-overview.png",
+      "/octopulse/07-agents.png",
+      "/octopulse/08-catalog.png",
+      "/octopulse/09-appointments.png",
+      "/octopulse/11-conversations.png",
+      "/octopulse/12-leads.png",
+      "/octopulse/13-ads.png",
+      "/octopulse/14-analytics.png",
+      "/octopulse/15-insights.png",
+      "/octopulse/18-settings-billing.png",
+      "/octopulse/19-settings-integrations-facebook.png",
+      "/octopulse/02-operation-overview.png",
+      "/octopulse/03-operation-tenants.png",
+      "/octopulse/04-operation-tenant-detail.png",
+      "/octopulse/05-operation-webhooks.png",
+      "/octopulse/06-operation-evals.png",
+      "/octopulse/07-operation-flags.png",
+      "/octopulse/08-operation-audit.png",
     ],
-    tags: ["Next.js", "React", "Tailwind CSS", "Vercel"],
-    year: 2025,
-    liveUrl: "https://orquestra-ph.vercel.app",
-    role: "Designer + Developer",
+    tags: ["Next.js 16", "AI Agents", "Multi-tenant", "pgvector", "Meta API"],
+    year: 2026,
+    status: "In Active Development · 2 paying users",
+    role: "Solo Developer — Design, Architecture, Engineering",
     problem:
-      "OrquestraPH needed a high-conversion landing page that established premium positioning and drove discovery call bookings — generic agency templates were not converting.",
+      "Filipino service businesses (clinics, salons, repair shops) burn money on Facebook ads but lose most of the leads — DMs and ad comments go unanswered after hours, qualifying happens manually, and bookings slip through the cracks. The result: high ad spend, low conversion, half-empty calendars.",
     solution:
-      "Designed and developed a conversion-focused website using a dark premium aesthetic with bold blue accents. Combined pain-point storytelling with clear solution framing: animated metrics showing lead response failures, a 6-step solution framework (Capture, Nurture, Qualify, Book, Close, Retarget), 4-step deployment process visualization, real testimonials, and a multi-step audit form for qualified lead capture.",
+      "Built a multi-tenant Next.js 16 platform where each business connects their FB Page and lets a coordinated team of AI agents run the entire funnel. The agents work together: one answers product questions on Messenger, one sells to high-intent leads, one closes the deal, and one books the appointment straight into Google Calendar with a PayMongo deposit. Every agent is grounded in a pgvector knowledge base (HNSW + hybrid retrieval) trained on the owner's own docs, menu, and pricing — so replies are accurate, on-brand, and bilingual (EN/TL). A separate /operation console gives the platform admin cross-tenant kill switches, webhook delivery log, golden-DM eval harness, and a tamper-evident audit log.",
     results: [
-      "Discovery call bookings increased by 200% vs the previous landing page",
-      "Multi-step audit form captures 3x more qualified leads than a simple contact form",
-      "Established OrquestraPH as a premium automation agency",
+      "Facebook ad spend converts harder — every comment and DM gets an AI reply in under a second, no lead leaks after hours",
+      "Calendars fill themselves — Reservation Agent books appointments end-to-end with deposit collection via PayMongo",
+      "AI agents handle 90%+ of inquiries unassisted, escalating only edge cases to the owner",
+      "2 live paying tenants in active production; platform iterating weekly toward broader rollout",
     ],
-    techStack: ["Next.js", "React", "Tailwind CSS", "Framer Motion", "Vercel", "Crisp Chat"],
+    agents: [
+      {
+        name: "Inquiry Agent",
+        role: "Front-line responder",
+        description:
+          "Answers every comment and DM in under a second. Pulls from the tenant's grounded knowledge base to reply accurately about products, pricing, hours, and location — in English or Tagalog. Captures contact info naturally during the conversation.",
+      },
+      {
+        name: "Sales Agent",
+        role: "Lead qualifier + ad amplifier",
+        description:
+          "Detects buying intent on FB ad comments, fires the comment-to-DM funnel, and qualifies the lead. Scores intent, surfaces the best-matching service, and hands off only the warmest leads — turning ad spend into pipeline instead of vanity metrics.",
+      },
+      {
+        name: "Closer Agent",
+        role: "Deal-maker",
+        description:
+          "Takes qualified leads and runs the close — handles objections, presents the offer, sends proof, and asks for the booking. Calibrated per tenant on tone, urgency, and pricing flexibility.",
+      },
+      {
+        name: "Reservation Agent",
+        role: "Calendar filler",
+        description:
+          "Books appointments end-to-end inside the chat — checks Google Calendar availability, confirms the slot, collects a PayMongo deposit, and sends reminders. Keeps the calendar full without a single human handoff.",
+      },
+    ],
+    testimonials: [
+      {
+        quote:
+          "Before Octopulse, our Facebook ads were just collecting comments we never answered. Now every single one becomes a real conversation, and most end up booked. Our calendar has never been this full.",
+        author: "Maria L.",
+        role: "Owner",
+        business: "Aesthetic Clinic, Davao City",
+      },
+      {
+        quote:
+          "I used to stay up until midnight replying to DMs. Octopulse handles all of it now — and honestly, the AI replies sound better than mine. Bookings doubled in the first month.",
+        author: "Joshua R.",
+        role: "Founder",
+        business: "Salon & Spa, Panabo City",
+      },
+    ],
+    techStack: [
+      "Next.js 16 + Turbopack",
+      "React 19",
+      "TypeScript",
+      "PostgreSQL 16 + pgvector (HNSW)",
+      "Drizzle ORM",
+      "BullMQ + Redis",
+      "Better Auth",
+      "Anthropic Claude (Sonnet/Haiku)",
+      "Google Gemini (embeddings + Pro/Flash)",
+      "Meta Graph API v19",
+      "PayMongo",
+      "Resend",
+    ],
+    imageGroups: [
+      {
+        label: "Tenant Workspace",
+        description:
+          "What business owners see — login flow first, then the workspace where AI agents run, leads come in, and bookings are made.",
+        images: [
+          "/octopulse/01-login.png",
+          "/octopulse/02-register.png",
+          "/octopulse/03-forgot-password.png",
+          "/octopulse/04-reset-password.png",
+          "/octopulse/05-dashboard.png",
+          "/octopulse/06-overview.png",
+          "/octopulse/07-agents.png",
+          "/octopulse/08-catalog.png",
+          "/octopulse/09-appointments.png",
+          "/octopulse/10-contacts.png",
+          "/octopulse/11-conversations.png",
+          "/octopulse/12-leads.png",
+          "/octopulse/13-ads.png",
+          "/octopulse/14-analytics.png",
+          "/octopulse/15-insights.png",
+          "/octopulse/16-profile.png",
+          "/octopulse/17-settings.png",
+          "/octopulse/18-settings-billing.png",
+          "/octopulse/19-settings-integrations-facebook.png",
+        ],
+      },
+      {
+        label: "Operator Console",
+        description:
+          "Restricted platform-admin view — operator login first, then cross-tenant pulse, kill switches, eval harness, webhook log, and audit trail.",
+        images: [
+          "/octopulse/01-operation-login.png",
+          "/octopulse/02-operation-overview.png",
+          "/octopulse/03-operation-tenants.png",
+          "/octopulse/04-operation-tenant-detail.png",
+          "/octopulse/05-operation-webhooks.png",
+          "/octopulse/06-operation-evals.png",
+          "/octopulse/07-operation-flags.png",
+          "/octopulse/08-operation-audit.png",
+        ],
+      },
+    ],
     featured: true,
   },
   {

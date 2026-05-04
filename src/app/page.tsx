@@ -13,11 +13,13 @@ export default function Home() {
       <Header />
       <main className="relative">
         <Hero />
-        <About />
-        <Skills />
-        <WorkGrid />
-        <GlobeSection />
-        <Contact />
+        <div className="relative z-10 bg-bg shadow-[0_-20px_40px_-10px_rgba(0,0,0,0.08)]">
+          <About />
+          <Skills />
+          <WorkGrid />
+          <GlobeSection />
+          <Contact />
+        </div>
       </main>
       <Footer />
     </>
