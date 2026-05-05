@@ -12,6 +12,9 @@ import { cn } from "@/lib/utils";
 
 type Tab = "projects" | "certificates";
 
+const SHOW_CERTIFICATES =
+  process.env.NEXT_PUBLIC_SHOW_CERTIFICATES === "true";
+
 export function WorkGrid() {
   const [tab, setTab] = useState<Tab>("projects");
   const projects = getFeaturedWork();
@@ -24,38 +27,46 @@ export function WorkGrid() {
             // 04 — portfolio.tabs
           </p>
           <h2 className="font-serif text-4xl lg:text-5xl text-fg font-medium mb-3">
-            Work &amp; Credentials
+            {SHOW_CERTIFICATES ? "Work & Credentials" : "Featured Work"}
           </h2>
           <p className="font-sans text-base text-fg-muted max-w-xl mx-auto">
-            Solo-built flagship projects on one side, certifications on the other.
+            {SHOW_CERTIFICATES
+              ? "Solo-built flagship projects on one side, certifications on the other."
+              : "Solo-built flagship projects — designed, built, deployed, and maintained myself."}
           </p>
         </Reveal>
 
-        {/* Tab switcher */}
-        <div className="flex justify-center mb-12">
-          <div
-            role="tablist"
-            className="inline-flex p-1 rounded-full bg-bg border border-border"
-          >
-            <TabButton
-              active={tab === "projects"}
-              onClick={() => setTab("projects")}
-              icon={<Briefcase size={14} />}
-              label="Projects"
-              count={projects.length}
-            />
-            <TabButton
-              active={tab === "certificates"}
-              onClick={() => setTab("certificates")}
-              icon={<Award size={14} />}
-              label="Certificates"
-              count={certificates.length}
-            />
+        {/* Tab switcher — only renders when certificates view is enabled */}
+        {SHOW_CERTIFICATES && (
+          <div className="flex justify-center mb-12">
+            <div
+              role="tablist"
+              className="inline-flex p-1 rounded-full bg-bg border border-border"
+            >
+              <TabButton
+                active={tab === "projects"}
+                onClick={() => setTab("projects")}
+                icon={<Briefcase size={14} />}
+                label="Projects"
+                count={projects.length}
+              />
+              <TabButton
+                active={tab === "certificates"}
+                onClick={() => setTab("certificates")}
+                icon={<Award size={14} />}
+                label="Certificates"
+                count={certificates.length}
+              />
+            </div>
           </div>
-        </div>
+        )}
 
-        {tab === "projects" && <ProjectsView items={projects} />}
-        {tab === "certificates" && <CertificatesView items={certificates} />}
+        {(!SHOW_CERTIFICATES || tab === "projects") && (
+          <ProjectsView items={projects} />
+        )}
+        {SHOW_CERTIFICATES && tab === "certificates" && (
+          <CertificatesView items={certificates} />
+        )}
       </div>
     </section>
   );
