@@ -159,7 +159,7 @@ export function Skills() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal className="text-center mb-12">
           <p className="font-mono text-xs text-accent mb-3">
-            // 02 — stack.json
+            // 03 — stack.json
           </p>
           <h2 className="font-serif text-4xl lg:text-5xl text-fg font-medium mb-3">
             Skills &amp; Tech Stack

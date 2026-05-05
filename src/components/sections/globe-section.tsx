@@ -198,7 +198,7 @@ export function GlobeSection() {
     >
       <Reveal className="text-center mb-8">
         <p className="font-mono text-xs text-accent mb-3">
-          // 04 — geo.reach
+          // 05 — geo.reach
         </p>
         <h2 className="font-serif text-3xl lg:text-4xl text-fg font-medium">
           Working Worldwide
