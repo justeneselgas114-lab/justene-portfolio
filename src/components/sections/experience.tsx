@@ -1,4 +1,4 @@
-import { Briefcase, MapPin, GraduationCap } from "lucide-react";
+import { Briefcase, MapPin, GraduationCap, ArrowUpRight } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { Chip } from "@/components/ui/chip";
 import { experience, education } from "@/lib/data/experience";
@@ -53,7 +53,22 @@ export function Experience() {
                       {role.title}
                     </h3>
                     <p className="font-sans text-sm text-fg-muted mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1">
-                      <span className="text-fg font-medium">{role.company}</span>
+                      {role.website ? (
+                        <a
+                          href={role.website}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1 text-fg font-medium hover:text-accent transition-colors group"
+                        >
+                          {role.company}
+                          <ArrowUpRight
+                            size={12}
+                            className="text-fg-subtle group-hover:text-accent group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                          />
+                        </a>
+                      ) : (
+                        <span className="text-fg font-medium">{role.company}</span>
+                      )}
                       <span className="inline-flex items-center gap-1 text-fg-subtle">
                         <MapPin size={12} />
                         {role.location}

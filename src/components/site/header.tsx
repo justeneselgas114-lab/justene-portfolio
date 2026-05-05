@@ -15,6 +15,7 @@ const navLinks = [
   { name: "Experience", href: "#experience" },
   { name: "Skills", href: "#skills" },
   { name: "Work", href: "#work" },
+  { name: "Articles", href: "/articles" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -69,16 +70,30 @@ export function Header() {
 
           {/* Desktop nav with animated underline */}
           <nav className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => smoothScroll(link.href)}
-                className="group relative px-4 py-2 text-sm font-medium text-fg-muted hover:text-fg transition-colors"
-              >
-                <span className="relative z-10">{link.name}</span>
-                <span className="absolute inset-x-4 bottom-1 h-px bg-accent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
-              </button>
-            ))}
+            {navLinks.map((link) => {
+              const isAnchor = link.href.startsWith("#");
+              const className =
+                "group relative px-4 py-2 text-sm font-medium text-fg-muted hover:text-fg transition-colors";
+              const inner = (
+                <>
+                  <span className="relative z-10">{link.name}</span>
+                  <span className="absolute inset-x-4 bottom-1 h-px bg-accent origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out" />
+                </>
+              );
+              return isAnchor ? (
+                <button
+                  key={link.name}
+                  onClick={() => smoothScroll(link.href)}
+                  className={className}
+                >
+                  {inner}
+                </button>
+              ) : (
+                <Link key={link.name} href={link.href} className={className}>
+                  {inner}
+                </Link>
+              );
+            })}
           </nav>
 
           <div className="flex items-center gap-2">
@@ -152,8 +167,10 @@ export function Header() {
 
                         {/* Staggered nav items */}
                         <nav className="flex flex-col gap-1">
-                          {navLinks.map((link, i) => (
-                            <motion.button
+                          {navLinks.map((link, i) => {
+                            const isAnchor = link.href.startsWith("#");
+                            return (
+                            <motion.div
                               key={link.name}
                               initial={{ opacity: 0, x: 24 }}
                               animate={{ opacity: 1, x: 0 }}
@@ -162,11 +179,14 @@ export function Header() {
                                 duration: 0.35,
                                 ease: [0.22, 1, 0.36, 1],
                               }}
+                            >
+                            {isAnchor ? (
+                            <button
                               onClick={() => {
                                 setOpen(false);
                                 setTimeout(() => smoothScroll(link.href), 280);
                               }}
-                              className="group flex items-center justify-between text-left px-4 py-3.5 text-2xl font-serif text-fg hover:text-accent rounded-lg transition-colors"
+                              className="group flex w-full items-center justify-between text-left px-4 py-3.5 text-2xl font-serif text-fg hover:text-accent rounded-lg transition-colors"
                             >
                               <span>
                                 <span className="font-mono text-xs text-fg-subtle mr-3">
@@ -178,8 +198,28 @@ export function Header() {
                                 size={18}
                                 className="text-fg-subtle group-hover:text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
                               />
-                            </motion.button>
-                          ))}
+                            </button>
+                            ) : (
+                            <Link
+                              href={link.href}
+                              onClick={() => setOpen(false)}
+                              className="group flex w-full items-center justify-between text-left px-4 py-3.5 text-2xl font-serif text-fg hover:text-accent rounded-lg transition-colors"
+                            >
+                              <span>
+                                <span className="font-mono text-xs text-fg-subtle mr-3">
+                                  0{i + 1}
+                                </span>
+                                {link.name}
+                              </span>
+                              <ArrowUpRight
+                                size={18}
+                                className="text-fg-subtle group-hover:text-accent group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"
+                              />
+                            </Link>
+                            )}
+                            </motion.div>
+                            );
+                          })}
                         </nav>
 
                         {/* CTA + footer in mobile menu */}

@@ -1,6 +1,7 @@
 export interface ExperienceRole {
   slug: string;
   company: string;
+  website?: string;
   title: string;
   location: string;
   remote: boolean;
@@ -16,6 +17,7 @@ export const experience: ExperienceRole[] = [
   {
     slug: "zappify",
     company: "Zappify.io",
+    website: "https://zappify.io/",
     title: "GoHighLevel Automation Specialist & Strategic Operations Partner",
     location: "Davao City, Philippines",
     remote: true,
@@ -41,6 +43,7 @@ export const experience: ExperienceRole[] = [
   {
     slug: "propulseva",
     company: "PropulseVA.com",
+    website: "https://propulseva.com/",
     title: "CRM Automation Specialist (GoHighLevel)",
     location: "Davao City, Philippines",
     remote: true,
