@@ -232,76 +232,237 @@ function ProjectsView({ items }: { items: WorkDetail[] }) {
 }
 
 function CertificatesView({ items }: { items: Certificate[] }) {
+  const inProgress = items.filter((c) => c.status === "in_progress");
+  const planned = items.filter((c) => c.status === "planned");
+  const completed = items.filter((c) => c.status === "completed");
+
   return (
     <>
-      <p className="font-sans text-sm text-fg-muted text-center max-w-xl mx-auto mb-16">
-        Continuous learning. Verified credentials in AI, automation, and modern web development.
+      <p className="font-sans text-sm text-fg-muted text-center max-w-2xl mx-auto mb-16 leading-relaxed">
+        Continuous learning — actively studying the Claude Code, agentic AI,
+        n8n, and GoHighLevel stacks I work in every day. Honest log of what
+        I&apos;m taking now and what&apos;s next on the list. Credentials get
+        their verify link the moment each course is done.
       </p>
 
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {items.map((cert, i) => (
-          <Reveal key={cert.slug} delay={i * 0.05}>
-            <article className="group h-full p-6 rounded-2xl bg-bg border border-border hover:border-accent/40 hover:-translate-y-1 transition-all duration-300 flex flex-col">
-              {cert.image ? (
-                <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-bg-muted mb-4 border border-border">
-                  <Image
-                    src={cert.image}
-                    alt={cert.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover"
-                  />
-                </div>
-              ) : (
-                <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-gradient-to-br from-accent-soft/20 to-bg-muted mb-4 border border-border flex items-center justify-center">
-                  <Award size={64} className="text-accent/30" strokeWidth={1.2} />
-                  <span className="absolute bottom-3 left-3 font-mono text-[10px] uppercase tracking-wider text-fg-subtle">
-                    {cert.issuer}
-                  </span>
-                </div>
-              )}
+      {completed.length > 0 && (
+        <div className="mb-12">
+          <CertGroupHeading
+            label="Completed"
+            sub="Verified credentials with proof"
+            count={completed.length}
+            tone="completed"
+          />
+          <CertGrid items={completed} />
+        </div>
+      )}
 
-              <div className="flex-1 flex flex-col">
-                <p className="font-mono text-[10px] uppercase tracking-wider text-accent mb-2">
-                  {cert.issuer} · {cert.year}
-                </p>
-                <h3 className="font-serif text-xl text-fg font-medium leading-snug mb-2">
-                  {cert.title}
-                </h3>
-                {cert.description && (
-                  <p className="font-sans text-sm text-fg-muted leading-relaxed mb-4">
-                    {cert.description}
-                  </p>
-                )}
+      {inProgress.length > 0 && (
+        <div className="mb-12">
+          <CertGroupHeading
+            label="In Progress"
+            sub="Currently studying"
+            count={inProgress.length}
+            tone="in_progress"
+          />
+          <CertGrid items={inProgress} />
+        </div>
+      )}
 
-                <div className="mt-auto pt-3 border-t border-border">
-                  {cert.verifyUrl ? (
-                    <a
-                      href={cert.verifyUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 font-sans text-sm font-medium text-accent hover:text-accent-hover transition-colors"
-                    >
-                      Verify credential
-                      <ExternalLink size={12} />
-                    </a>
-                  ) : (
-                    <span className="font-mono text-xs text-fg-subtle">
-                      certificate · verified
-                    </span>
-                  )}
-                </div>
-              </div>
-            </article>
-          </Reveal>
-        ))}
-      </div>
+      {planned.length > 0 && (
+        <div className="mb-12">
+          <CertGroupHeading
+            label="On the Reading List"
+            sub="Next on deck"
+            count={planned.length}
+            tone="planned"
+          />
+          <CertGrid items={planned} />
+        </div>
+      )}
 
-      <Reveal delay={0.1} className="text-center mt-12">
-        <p className="font-mono text-xs text-fg-subtle">
-          More certifications in progress — Anthropic AI Engineering, Vapi Voice AI, Supabase Advanced.
+      <Reveal delay={0.1} className="text-center mt-12 max-w-2xl mx-auto">
+        <p className="font-sans text-sm text-fg-muted leading-relaxed">
+          The fastest way to stay sharp is to keep studying the same field
+          you&apos;re shipping in. The more I understand the strategy behind
+          modern AI deployment, the better the systems I build for clients.
         </p>
       </Reveal>
     </>
+  );
+}
+
+function CertGroupHeading({
+  label,
+  sub,
+  count,
+  tone,
+}: {
+  label: string;
+  sub: string;
+  count: number;
+  tone: "in_progress" | "planned" | "completed";
+}) {
+  const dotClass =
+    tone === "in_progress"
+      ? "bg-accent status-dot"
+      : tone === "completed"
+        ? "bg-emerald-500"
+        : "bg-fg-subtle/50";
+  return (
+    <div className="flex items-baseline justify-between mb-6">
+      <div className="flex items-center gap-3">
+        <span
+          className={`relative inline-flex w-2 h-2 rounded-full ${dotClass}`}
+          aria-hidden="true"
+        />
+        <h3 className="font-serif text-xl text-fg font-medium">{label}</h3>
+        <span className="font-mono text-[10px] uppercase tracking-wider text-fg-subtle bg-bg-elevated px-2 py-0.5 rounded">
+          {count}
+        </span>
+      </div>
+      <p className="hidden sm:block font-mono text-[11px] text-fg-subtle uppercase tracking-wider">
+        {sub}
+      </p>
+    </div>
+  );
+}
+
+function CertGrid({ items }: { items: Certificate[] }) {
+  return (
+    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {items.map((cert, i) => (
+        <Reveal key={cert.slug} delay={i * 0.05}>
+          <CertCard cert={cert} />
+        </Reveal>
+      ))}
+    </div>
+  );
+}
+
+function CertCard({ cert }: { cert: Certificate }) {
+  const isCompleted = cert.status === "completed";
+  const isInProgress = cert.status === "in_progress";
+
+  return (
+    <article
+      className={cn(
+        "group h-full p-6 rounded-2xl border transition-all duration-300 flex flex-col bg-bg",
+        isInProgress
+          ? "border-accent/40 hover:border-accent/70 hover:-translate-y-1"
+          : isCompleted
+            ? "border-emerald-500/30 hover:border-emerald-500/60 hover:-translate-y-1"
+            : "border-dashed border-border hover:border-fg-subtle/50"
+      )}
+    >
+      {cert.image ? (
+        <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-bg-muted mb-4 border border-border">
+          <Image
+            src={cert.image}
+            alt={cert.title}
+            fill
+            sizes="(max-width: 768px) 100vw, 33vw"
+            className="object-cover"
+          />
+        </div>
+      ) : (
+        <div
+          className={cn(
+            "relative aspect-[4/3] rounded-lg overflow-hidden mb-4 border flex items-center justify-center",
+            isInProgress
+              ? "bg-gradient-to-br from-accent-soft/30 to-bg-muted border-accent/30"
+              : isCompleted
+                ? "bg-gradient-to-br from-emerald-500/15 to-bg-muted border-emerald-500/30"
+                : "bg-gradient-to-br from-fg/5 to-bg-muted border-border"
+          )}
+        >
+          <Award
+            size={64}
+            className={cn(
+              isInProgress
+                ? "text-accent/50"
+                : isCompleted
+                  ? "text-emerald-500/50"
+                  : "text-fg-subtle/40"
+            )}
+            strokeWidth={1.2}
+          />
+          <span className="absolute bottom-3 left-3 font-mono text-[10px] uppercase tracking-wider text-fg-subtle">
+            {cert.issuer}
+          </span>
+          <span
+            className={cn(
+              "absolute top-3 right-3 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full",
+              isInProgress
+                ? "bg-accent text-bg"
+                : isCompleted
+                  ? "bg-emerald-500 text-bg"
+                  : "bg-bg-elevated text-fg-subtle border border-border"
+            )}
+          >
+            {isInProgress && (
+              <span
+                className="inline-block w-1.5 h-1.5 rounded-full bg-bg animate-pulse"
+                aria-hidden="true"
+              />
+            )}
+            {isInProgress
+              ? "In progress"
+              : isCompleted
+                ? "Completed"
+                : "Up next"}
+          </span>
+        </div>
+      )}
+
+      <div className="flex-1 flex flex-col">
+        <p className="font-mono text-[10px] uppercase tracking-wider text-accent mb-2">
+          {cert.issuer}
+          {cert.target && ` · ${cert.target}`}
+        </p>
+        <h3 className="font-serif text-xl text-fg font-medium leading-snug mb-2">
+          {cert.title}
+        </h3>
+        {cert.description && (
+          <p className="font-sans text-sm text-fg-muted leading-relaxed mb-3">
+            {cert.description}
+          </p>
+        )}
+        {cert.why && (
+          <p className="font-sans text-xs text-fg-subtle italic leading-relaxed mb-4 pl-3 border-l-2 border-accent/30">
+            {cert.why}
+          </p>
+        )}
+
+        <div className="mt-auto pt-3 border-t border-border flex items-center justify-between gap-3">
+          {cert.verifyUrl ? (
+            <a
+              href={cert.verifyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 font-sans text-sm font-medium text-emerald-500 hover:text-emerald-600 transition-colors"
+            >
+              Verify credential
+              <ExternalLink size={12} />
+            </a>
+          ) : cert.courseUrl ? (
+            <a
+              href={cert.courseUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 font-sans text-sm font-medium text-accent hover:text-accent-hover transition-colors"
+            >
+              View course
+              <ExternalLink size={12} />
+            </a>
+          ) : (
+            <span className="font-mono text-xs text-fg-subtle">
+              {isCompleted ? "certificate · verified" : "self-study track"}
+            </span>
+          )}
+          <span className="font-mono text-[10px] text-fg-subtle">{cert.year}</span>
+        </div>
+      </div>
+    </article>
   );
 }
