@@ -7,6 +7,7 @@ import { Skills } from "@/components/sections/skills";
 import { WorkGrid } from "@/components/sections/work-grid";
 import { GlobeSection } from "@/components/sections/globe-section";
 import { Contact } from "@/components/sections/contact";
+import { FeaturedArticles } from "@/components/sections/featured-articles";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
           <WorkGrid />
           <GlobeSection />
           <Contact />
+          <FeaturedArticles />
         </div>
       </main>
       <Footer />
