@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Fraunces, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/site/theme-provider";
 import { LoadingScreen } from "@/components/site/loading-screen";
-import { AgentButton } from "@/components/ai-agent/agent-button";
+import { QuickFAQ } from "@/components/faq/quick-faq";
 import { env } from "@/lib/env";
 import "./globals.css";
 
@@ -70,7 +70,7 @@ export default function RootLayout({
         <ThemeProvider>
           <LoadingScreen />
           {children}
-          <AgentButton />
+          <QuickFAQ />
         </ThemeProvider>
       </body>
     </html>
