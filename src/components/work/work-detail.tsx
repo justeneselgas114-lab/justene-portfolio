@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight, CheckCircle2, Bot, Quote, Sparkles } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, CheckCircle2, Bot, Quote, Sparkles, Terminal } from "lucide-react";
 import { Chip } from "@/components/ui/chip";
 import { Button } from "@/components/ui/button";
 import { GalleryTabs } from "@/components/work/gallery-tabs";
@@ -124,6 +124,34 @@ export function WorkDetail({ work }: { work: WorkDetailType }) {
             </div>
           )}
 
+          {work.claudeCode && (
+            <div className="rounded-2xl border border-accent/30 bg-accent-soft/15 p-6">
+              <div className="flex items-center gap-2 mb-3">
+                <Terminal size={16} className="text-accent" />
+                <p className="font-mono text-[11px] uppercase tracking-wider text-accent">
+                  Built with Claude Code
+                </p>
+              </div>
+              <p className="font-sans text-sm text-fg-muted leading-relaxed mb-5">
+                {work.claudeCode.summary}
+              </p>
+              <div className="grid sm:grid-cols-2 gap-4">
+                {work.claudeCode.agents && work.claudeCode.agents.length > 0 && (
+                  <CCStackBlock label="Agents" items={work.claudeCode.agents} />
+                )}
+                {work.claudeCode.skills && work.claudeCode.skills.length > 0 && (
+                  <CCStackBlock label="Skills" items={work.claudeCode.skills} />
+                )}
+                {work.claudeCode.mcps && work.claudeCode.mcps.length > 0 && (
+                  <CCStackBlock label="MCP servers" items={work.claudeCode.mcps} />
+                )}
+                {work.claudeCode.hooks && work.claudeCode.hooks.length > 0 && (
+                  <CCStackBlock label="Hooks" items={work.claudeCode.hooks} />
+                )}
+              </div>
+            </div>
+          )}
+
           <div>
             <h2 className="font-serif text-2xl lg:text-3xl text-fg font-medium mb-4">Results</h2>
             <ul className="space-y-3">
@@ -231,6 +259,26 @@ function Block({ title, body }: { title: string; body: string }) {
     <div>
       <h2 className="font-serif text-2xl lg:text-3xl text-fg font-medium mb-4">{title}</h2>
       <p className="font-sans text-base text-fg-muted leading-relaxed">{body}</p>
+    </div>
+  );
+}
+
+function CCStackBlock({ label, items }: { label: string; items: string[] }) {
+  return (
+    <div>
+      <p className="font-mono text-[10px] uppercase tracking-wider text-fg-subtle mb-2">
+        {label}
+      </p>
+      <div className="flex flex-wrap gap-1.5">
+        {items.map((item) => (
+          <span
+            key={item}
+            className="inline-flex items-center px-2 py-1 rounded font-mono text-[11px] text-fg bg-bg border border-accent/20"
+          >
+            {item}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }

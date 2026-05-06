@@ -7,7 +7,16 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-fg-muted font-sans">
-            © {new Date().getFullYear()} Justene. Built with Claude Code.
+            © {new Date().getFullYear()} Justene. Built with{" "}
+            <a
+              href="https://github.com/justeneselgas114-lab/claude-code-toolkit"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:text-accent-hover underline-offset-4 hover:underline transition-colors"
+            >
+              Claude Code
+            </a>
+            .
           </p>
           <div className="flex items-center gap-2">
             <FooterLink href="https://www.linkedin.com/in/justene-selgas-152052377/?skipRedirect=true" label="LinkedIn">

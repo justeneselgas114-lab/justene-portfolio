@@ -34,10 +34,6 @@ export function WorkGrid() {
 function ProjectsView({ items }: { items: WorkDetail[] }) {
   return (
     <>
-      <p className="font-sans text-sm text-fg-muted text-center max-w-xl mx-auto mb-16">
-        The biggest projects I&apos;ve shipped end-to-end as a solo developer — designed, built, deployed, and maintained myself.
-      </p>
-
       <div className="space-y-24 lg:space-y-32">
         {items.map((work, idx) => {
           const reverse = idx % 2 === 1;
