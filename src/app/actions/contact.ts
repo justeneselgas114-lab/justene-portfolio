@@ -30,15 +30,12 @@ async function notifyWhatsApp(payload: {
   const phone = process.env.CALLMEBOT_PHONE; // international format, e.g. 639638296973
   if (!apiKey || !phone) return;
 
-  const summary = payload.message.length > 200
-    ? payload.message.slice(0, 200) + "..."
-    : payload.message;
   const text =
     `📩 New portfolio inquiry\n\n` +
     `From: ${payload.name}\n` +
     `Email: ${payload.email}\n` +
     `Mobile: ${payload.phone}\n\n` +
-    `${summary}`;
+    `${payload.message}`;
 
   try {
     const url = `https://api.callmebot.com/whatsapp.php?phone=${encodeURIComponent(phone)}&text=${encodeURIComponent(text)}&apikey=${encodeURIComponent(apiKey)}`;

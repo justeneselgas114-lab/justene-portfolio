@@ -1,22 +1,13 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, CheckCircle2, Award, Briefcase, ExternalLink } from "lucide-react";
+import { ArrowUpRight, CheckCircle2 } from "lucide-react";
 import { Reveal } from "@/components/ui/reveal";
 import { Chip } from "@/components/ui/chip";
 import { getFeaturedWork, type WorkDetail } from "@/lib/data/work";
-import { certificates, type Certificate } from "@/lib/data/certificates";
-import { cn } from "@/lib/utils";
-
-type Tab = "projects" | "certificates";
-
-const SHOW_CERTIFICATES =
-  process.env.NEXT_PUBLIC_SHOW_CERTIFICATES === "true";
 
 export function WorkGrid() {
-  const [tab, setTab] = useState<Tab>("projects");
   const projects = getFeaturedWork();
 
   return (
@@ -24,90 +15,19 @@ export function WorkGrid() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal className="text-center mb-10">
           <p className="font-mono text-xs text-accent mb-3">
-            // 04 — portfolio.tabs
+            // 04 — featured.work
           </p>
           <h2 className="font-serif text-4xl lg:text-5xl text-fg font-medium mb-3">
-            {SHOW_CERTIFICATES ? "Work & Credentials" : "Featured Work"}
+            Featured Work
           </h2>
           <p className="font-sans text-base text-fg-muted max-w-xl mx-auto">
-            {SHOW_CERTIFICATES
-              ? "Solo-built flagship projects on one side, certifications on the other."
-              : "Solo-built flagship projects — designed, built, deployed, and maintained myself."}
+            Solo-built flagship projects — designed, built, deployed, and maintained myself.
           </p>
         </Reveal>
 
-        {/* Tab switcher — only renders when certificates view is enabled */}
-        {SHOW_CERTIFICATES && (
-          <div className="flex justify-center mb-12">
-            <div
-              role="tablist"
-              className="inline-flex p-1 rounded-full bg-bg border border-border"
-            >
-              <TabButton
-                active={tab === "projects"}
-                onClick={() => setTab("projects")}
-                icon={<Briefcase size={14} />}
-                label="Projects"
-                count={projects.length}
-              />
-              <TabButton
-                active={tab === "certificates"}
-                onClick={() => setTab("certificates")}
-                icon={<Award size={14} />}
-                label="Certificates"
-                count={certificates.length}
-              />
-            </div>
-          </div>
-        )}
-
-        {(!SHOW_CERTIFICATES || tab === "projects") && (
-          <ProjectsView items={projects} />
-        )}
-        {SHOW_CERTIFICATES && tab === "certificates" && (
-          <CertificatesView items={certificates} />
-        )}
+        <ProjectsView items={projects} />
       </div>
     </section>
-  );
-}
-
-function TabButton({
-  active,
-  onClick,
-  icon,
-  label,
-  count,
-}: {
-  active: boolean;
-  onClick: () => void;
-  icon: React.ReactNode;
-  label: string;
-  count: number;
-}) {
-  return (
-    <button
-      role="tab"
-      aria-selected={active}
-      onClick={onClick}
-      className={cn(
-        "inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-sans text-sm font-medium transition-all",
-        active
-          ? "bg-accent text-bg shadow-sm"
-          : "text-fg-muted hover:text-fg"
-      )}
-    >
-      {icon}
-      <span>{label}</span>
-      <span
-        className={cn(
-          "font-mono text-[10px] px-1.5 py-0.5 rounded",
-          active ? "bg-bg/20 text-bg" : "bg-bg-elevated text-fg-subtle"
-        )}
-      >
-        {count}
-      </span>
-    </button>
   );
 }
 
@@ -239,241 +159,5 @@ function ProjectsView({ items }: { items: WorkDetail[] }) {
         </p>
       </Reveal>
     </>
-  );
-}
-
-function CertificatesView({ items }: { items: Certificate[] }) {
-  const inProgress = items.filter((c) => c.status === "in_progress");
-  const planned = items.filter((c) => c.status === "planned");
-  const completed = items.filter((c) => c.status === "completed");
-
-  return (
-    <>
-      <p className="font-sans text-sm text-fg-muted text-center max-w-2xl mx-auto mb-16 leading-relaxed">
-        Continuous learning — actively studying the Claude Code, agentic AI,
-        n8n, and GoHighLevel stacks I work in every day. Honest log of what
-        I&apos;m taking now and what&apos;s next on the list. Credentials get
-        their verify link the moment each course is done.
-      </p>
-
-      {completed.length > 0 && (
-        <div className="mb-12">
-          <CertGroupHeading
-            label="Completed"
-            sub="Verified credentials with proof"
-            count={completed.length}
-            tone="completed"
-          />
-          <CertGrid items={completed} />
-        </div>
-      )}
-
-      {inProgress.length > 0 && (
-        <div className="mb-12">
-          <CertGroupHeading
-            label="In Progress"
-            sub="Currently studying"
-            count={inProgress.length}
-            tone="in_progress"
-          />
-          <CertGrid items={inProgress} />
-        </div>
-      )}
-
-      {planned.length > 0 && (
-        <div className="mb-12">
-          <CertGroupHeading
-            label="On the Reading List"
-            sub="Next on deck"
-            count={planned.length}
-            tone="planned"
-          />
-          <CertGrid items={planned} />
-        </div>
-      )}
-
-      <Reveal delay={0.1} className="text-center mt-12 max-w-2xl mx-auto">
-        <p className="font-sans text-sm text-fg-muted leading-relaxed">
-          The fastest way to stay sharp is to keep studying the same field
-          you&apos;re shipping in. The more I understand the strategy behind
-          modern AI deployment, the better the systems I build for clients.
-        </p>
-      </Reveal>
-    </>
-  );
-}
-
-function CertGroupHeading({
-  label,
-  sub,
-  count,
-  tone,
-}: {
-  label: string;
-  sub: string;
-  count: number;
-  tone: "in_progress" | "planned" | "completed";
-}) {
-  const dotClass =
-    tone === "in_progress"
-      ? "bg-accent status-dot"
-      : tone === "completed"
-        ? "bg-emerald-500"
-        : "bg-fg-subtle/50";
-  return (
-    <div className="flex items-baseline justify-between mb-6">
-      <div className="flex items-center gap-3">
-        <span
-          className={`relative inline-flex w-2 h-2 rounded-full ${dotClass}`}
-          aria-hidden="true"
-        />
-        <h3 className="font-serif text-xl text-fg font-medium">{label}</h3>
-        <span className="font-mono text-[10px] uppercase tracking-wider text-fg-subtle bg-bg-elevated px-2 py-0.5 rounded">
-          {count}
-        </span>
-      </div>
-      <p className="hidden sm:block font-mono text-[11px] text-fg-subtle uppercase tracking-wider">
-        {sub}
-      </p>
-    </div>
-  );
-}
-
-function CertGrid({ items }: { items: Certificate[] }) {
-  return (
-    <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {items.map((cert, i) => (
-        <Reveal key={cert.slug} delay={i * 0.05}>
-          <CertCard cert={cert} />
-        </Reveal>
-      ))}
-    </div>
-  );
-}
-
-function CertCard({ cert }: { cert: Certificate }) {
-  const isCompleted = cert.status === "completed";
-  const isInProgress = cert.status === "in_progress";
-
-  return (
-    <article
-      className={cn(
-        "group h-full p-6 rounded-2xl border transition-all duration-300 flex flex-col bg-bg",
-        isInProgress
-          ? "border-accent/40 hover:border-accent/70 hover:-translate-y-1"
-          : isCompleted
-            ? "border-emerald-500/30 hover:border-emerald-500/60 hover:-translate-y-1"
-            : "border-dashed border-border hover:border-fg-subtle/50"
-      )}
-    >
-      {cert.image ? (
-        <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-bg-muted mb-4 border border-border">
-          <Image
-            src={cert.image}
-            alt={cert.title}
-            fill
-            sizes="(max-width: 768px) 100vw, 33vw"
-            className="object-cover"
-          />
-        </div>
-      ) : (
-        <div
-          className={cn(
-            "relative aspect-[4/3] rounded-lg overflow-hidden mb-4 border flex items-center justify-center",
-            isInProgress
-              ? "bg-gradient-to-br from-accent-soft/30 to-bg-muted border-accent/30"
-              : isCompleted
-                ? "bg-gradient-to-br from-emerald-500/15 to-bg-muted border-emerald-500/30"
-                : "bg-gradient-to-br from-fg/5 to-bg-muted border-border"
-          )}
-        >
-          <Award
-            size={64}
-            className={cn(
-              isInProgress
-                ? "text-accent/50"
-                : isCompleted
-                  ? "text-emerald-500/50"
-                  : "text-fg-subtle/40"
-            )}
-            strokeWidth={1.2}
-          />
-          <span className="absolute bottom-3 left-3 font-mono text-[10px] uppercase tracking-wider text-fg-subtle">
-            {cert.issuer}
-          </span>
-          <span
-            className={cn(
-              "absolute top-3 right-3 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full",
-              isInProgress
-                ? "bg-accent text-bg"
-                : isCompleted
-                  ? "bg-emerald-500 text-bg"
-                  : "bg-bg-elevated text-fg-subtle border border-border"
-            )}
-          >
-            {isInProgress && (
-              <span
-                className="inline-block w-1.5 h-1.5 rounded-full bg-bg animate-pulse"
-                aria-hidden="true"
-              />
-            )}
-            {isInProgress
-              ? "In progress"
-              : isCompleted
-                ? "Completed"
-                : "Up next"}
-          </span>
-        </div>
-      )}
-
-      <div className="flex-1 flex flex-col">
-        <p className="font-mono text-[10px] uppercase tracking-wider text-accent mb-2">
-          {cert.issuer}
-          {cert.target && ` · ${cert.target}`}
-        </p>
-        <h3 className="font-serif text-xl text-fg font-medium leading-snug mb-2">
-          {cert.title}
-        </h3>
-        {cert.description && (
-          <p className="font-sans text-sm text-fg-muted leading-relaxed mb-3">
-            {cert.description}
-          </p>
-        )}
-        {cert.why && (
-          <p className="font-sans text-xs text-fg-subtle italic leading-relaxed mb-4 pl-3 border-l-2 border-accent/30">
-            {cert.why}
-          </p>
-        )}
-
-        <div className="mt-auto pt-3 border-t border-border flex items-center justify-between gap-3">
-          {cert.verifyUrl ? (
-            <a
-              href={cert.verifyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 font-sans text-sm font-medium text-emerald-500 hover:text-emerald-600 transition-colors"
-            >
-              Verify credential
-              <ExternalLink size={12} />
-            </a>
-          ) : cert.courseUrl ? (
-            <a
-              href={cert.courseUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 font-sans text-sm font-medium text-accent hover:text-accent-hover transition-colors"
-            >
-              View course
-              <ExternalLink size={12} />
-            </a>
-          ) : (
-            <span className="font-mono text-xs text-fg-subtle">
-              {isCompleted ? "certificate · verified" : "self-study track"}
-            </span>
-          )}
-          <span className="font-mono text-[10px] text-fg-subtle">{cert.year}</span>
-        </div>
-      </div>
-    </article>
   );
 }
