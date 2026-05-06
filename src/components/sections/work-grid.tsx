@@ -11,7 +11,7 @@ import { getFeaturedWork, type WorkDetail } from "@/lib/data/work";
 import { ccProof, type CCProofItem } from "@/lib/data/cc-proof";
 import { cn } from "@/lib/utils";
 
-type Tab = "projects" | "github";
+type Tab = "projects" | "toolkit";
 
 export function WorkGrid() {
   const [tab, setTab] = useState<Tab>("projects");
@@ -25,7 +25,7 @@ export function WorkGrid() {
             // 04 — work.tabs
           </p>
           <h2 className="font-serif text-4xl lg:text-5xl text-fg font-medium mb-3">
-            {tab === "projects" ? "Featured Work" : "GitHub & Claude Code Toolkit"}
+            {tab === "projects" ? "Featured Work" : "Claude Development Toolkit"}
           </h2>
           <p className="font-sans text-base text-fg-muted max-w-xl mx-auto">
             {tab === "projects"
@@ -47,17 +47,17 @@ export function WorkGrid() {
               count={projects.length}
             />
             <TabButton
-              active={tab === "github"}
-              onClick={() => setTab("github")}
+              active={tab === "toolkit"}
+              onClick={() => setTab("toolkit")}
               icon={<BrandIcon name="github" size={14} alt="GitHub" />}
-              label="GitHub Toolkit"
+              label="Claude Development Toolkit"
               count={ccProof.length}
             />
           </div>
         </div>
 
         {tab === "projects" && <ProjectsView items={projects} />}
-        {tab === "github" && <GithubToolkitView items={ccProof} />}
+        {tab === "toolkit" && <GithubToolkitView items={ccProof} />}
       </div>
     </section>
   );
@@ -264,25 +264,40 @@ function GithubToolkitView({ items }: { items: CCProofItem[] }) {
                   reverse ? "lg:[&>*:first-child]:order-2" : ""
                 }`}
               >
-                <a
-                  href={item.image}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative block rounded-2xl overflow-hidden bg-[#1e1e1e] border border-border shadow-md"
-                >
-                  <Image
-                    src={item.image}
-                    alt={`Claude Code ${item.command} terminal output`}
-                    width={item.imageWidth}
-                    height={item.imageHeight}
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="block w-full h-auto transition-transform duration-700 group-hover:scale-[1.02]"
-                  />
-                  <div className="absolute top-4 left-4 font-mono text-[10px] uppercase tracking-wider text-bg bg-accent/90 backdrop-blur px-2 py-1 rounded inline-flex items-center gap-1.5">
-                    <Terminal size={10} />
-                    {item.command}
-                  </div>
-                </a>
+                <div>
+                  <a
+                    href={item.image}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative block rounded-2xl overflow-hidden bg-[#1e1e1e] border border-border shadow-md"
+                  >
+                    <Image
+                      src={item.image}
+                      alt={`Claude Code ${item.command} terminal output`}
+                      width={item.imageWidth}
+                      height={item.imageHeight}
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="block w-full h-auto transition-transform duration-700 group-hover:scale-[1.02]"
+                    />
+                    <div className="absolute top-4 left-4 font-mono text-[10px] uppercase tracking-wider text-bg bg-accent/90 backdrop-blur px-2 py-1 rounded inline-flex items-center gap-1.5">
+                      <Terminal size={10} />
+                      {item.command}
+                    </div>
+                  </a>
+                  <a
+                    href={item.link?.url ?? "https://github.com/justeneselgas114-lab/claude-code-toolkit"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-3 inline-flex items-center gap-2 font-sans text-sm font-medium text-accent hover:text-accent-hover transition-colors group"
+                  >
+                    <BrandIcon name="github" size={14} alt="GitHub" />
+                    View GitHub toolkit
+                    <ArrowUpRight
+                      size={14}
+                      className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                    />
+                  </a>
+                </div>
 
                 <div>
                   <p className="font-mono text-xs text-accent mb-2">
