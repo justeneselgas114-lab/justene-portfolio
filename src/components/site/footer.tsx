@@ -19,6 +19,9 @@ export function Footer() {
             .
           </p>
           <div className="flex items-center gap-2">
+            <FooterLink href="https://github.com/justeneselgas114-lab" label="GitHub">
+              <BrandIcon name="github" size={18} alt="GitHub" />
+            </FooterLink>
             <FooterLink href="https://www.linkedin.com/in/justene-selgas-152052377/?skipRedirect=true" label="LinkedIn">
               <BrandIcon name="linkedin" size={18} alt="LinkedIn" />
             </FooterLink>

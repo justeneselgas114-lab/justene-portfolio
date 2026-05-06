@@ -1,5 +1,5 @@
 import { Mail } from "lucide-react";
-import { FaWhatsapp, FaLinkedinIn, FaFacebookF, FaInstagram } from "react-icons/fa";
+import { FaWhatsapp, FaLinkedinIn, FaFacebookF, FaInstagram, FaGithub } from "react-icons/fa";
 import { Reveal } from "@/components/ui/reveal";
 import { ContactForm } from "@/components/contact/contact-form";
 import { BookCallButton } from "@/components/contact/book-call-button";
@@ -52,6 +52,12 @@ export function Contact() {
                 </ContactRow>
                 <ContactRow href="https://wa.me/639638296973" icon={<FaWhatsapp size={16} />}>
                   09638296973 (WhatsApp)
+                </ContactRow>
+                <ContactRow
+                  href="https://github.com/justeneselgas114-lab"
+                  icon={<FaGithub size={16} />}
+                >
+                  GitHub — justeneselgas114-lab
                 </ContactRow>
                 <ContactRow
                   href="https://www.facebook.com/Just10AiAutomation/"

@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { DecorCircles } from "@/components/ui/decor-circles";
+import { BrandIcon } from "@/components/ui/brand-icon";
 
 export function Hero() {
   return (
@@ -65,6 +66,37 @@ export function Hero() {
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
               </a>
             </Button>
+
+            <div className="mt-6 flex items-center gap-1">
+              <p className="font-mono text-[11px] text-fg-subtle mr-2 hidden sm:inline">
+                find me —
+              </p>
+              <HeroSocial
+                href="https://github.com/justeneselgas114-lab"
+                label="GitHub"
+                icon={<BrandIcon name="github" size={18} alt="GitHub" />}
+              />
+              <HeroSocial
+                href="https://www.linkedin.com/in/justene-selgas-152052377/?skipRedirect=true"
+                label="LinkedIn"
+                icon={<BrandIcon name="linkedin" size={18} alt="LinkedIn" />}
+              />
+              <HeroSocial
+                href="https://www.facebook.com/Just10AiAutomation/"
+                label="Facebook"
+                icon={<BrandIcon name="facebook" size={18} alt="Facebook" />}
+              />
+              <HeroSocial
+                href="https://wa.me/639638296973"
+                label="WhatsApp"
+                icon={<BrandIcon name="whatsapp" size={18} alt="WhatsApp" />}
+              />
+              <HeroSocial
+                href="mailto:justene.dev@gmail.com"
+                label="Email"
+                icon={<Mail size={18} className="text-fg-subtle" />}
+              />
+            </div>
           </div>
 
           {/* CENTER - mobile inline photo (sticky on mobile so image stays put while text scrolls) */}
@@ -150,5 +182,28 @@ export function Hero() {
       </div>
 
     </section>
+  );
+}
+
+function HeroSocial({
+  href,
+  label,
+  icon,
+}: {
+  href: string;
+  label: string;
+  icon: React.ReactNode;
+}) {
+  const external = href.startsWith("http");
+  return (
+    <a
+      href={href}
+      aria-label={label}
+      title={label}
+      className="p-2 rounded-lg hover:bg-bg-elevated hover:scale-110 transition-all"
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+    >
+      {icon}
+    </a>
   );
 }
