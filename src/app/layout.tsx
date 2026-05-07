@@ -45,14 +45,23 @@ export const metadata: Metadata = {
     "Next.js",
     "Davao City",
   ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     url: env.NEXT_PUBLIC_SITE_URL,
     siteName: "Justene Selgas",
+    title: "Justene Selgas — Junior Full-Stack Developer & Claude AI Specialist",
+    description:
+      "Junior Full-Stack Developer, n8n Integrations Specialist, and Claude AI Specialist based in Davao City, Philippines.",
   },
   twitter: {
     card: "summary_large_image",
+    title: "Justene Selgas — Full-Stack Dev & Claude AI Specialist",
+    description:
+      "Building Claude-powered AI agents, n8n automations, and Next.js apps from Davao City.",
   },
   robots: { index: true, follow: true },
 };
