@@ -5,16 +5,6 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
   },
   reactStrictMode: true,
-  async redirects() {
-    return [
-      {
-        source: "/:path*",
-        has: [{ type: "host", value: "www.justene.dev" }],
-        destination: "https://justene.dev/:path*",
-        permanent: true,
-      },
-    ];
-  },
   async headers() {
     return [
       {
