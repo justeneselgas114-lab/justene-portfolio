@@ -336,6 +336,93 @@ export const work: WorkDetail[] = [
     },
   },
   {
+    slug: "maxicare-aria",
+    title: "Maxicare Aria — Health Insurance AI Agent",
+    type: "automation",
+    shortDescription:
+      "Multi-workflow AI agent for a Maxicare + Manulife insurance brokerage — answers FB DMs, qualifies prospects, finds accredited doctors from a Postgres registry, files lead packets to agents, and runs a Stage-3 lab-result follow-up cron.",
+    thumbnail: "/maxicare-aria/01-fb-lead-notify.png",
+    thumbnailWidth: 1920,
+    thumbnailHeight: 1080,
+    images: [
+      "/maxicare-aria/01-fb-lead-notify.png",
+      "/maxicare-aria/02-submit-lead-notify.png",
+      "/maxicare-aria/03-kb-ingestion.png",
+      "/maxicare-aria/04-lab-followup-cron.png",
+      "/maxicare-aria/05-find-doctor.png",
+    ],
+    tags: ["AI Agent", "Supabase Vector", "Meta Graph API", "Postgres", "Gmail"],
+    year: 2026,
+    nodes: 32,
+    problem:
+      "A Maxicare + Manulife insurance brokerage was losing inquiries on Facebook — DMs about HMO coverage, accredited doctors, and lab-result follow-ups went unanswered after hours. Agents typed the same plan explainers a hundred times a day, manually searched a 5,000-row accredited-physician spreadsheet, and forgot Stage-3 client lab follow-ups. Every missed reply was a lost commission.",
+    solution:
+      "Built Aria — a four-workflow AI agent system that handles the entire FB-to-policy funnel. Workflow 1 (Aria Core) verifies Meta webhooks, routes events, and runs the AI Agent grounded on a Supabase pgvector knowledge base of Maxicare + Manulife plans, with Postgres chat memory and two callable tools: find_doctor and submit_lead. Workflow 2 (KB Ingestion) lets the broker drag-and-drop policy PDFs into a form — files are chunked via RecursiveCharacterTextSplitter, embedded with OpenAI, and upserted into Supabase. Workflow 3 (Find Doctor) executes a typed Postgres query against the accredited-physician registry and formats results back to the agent. Workflow 4 (Submit Lead) sanitizes intake, inserts the lead, builds a structured email packet, and emails both the assigned agent and the patient — attaching the right application form PDF when applicable. A daily 10 AM Manila cron (Workflow 5) sweeps eligible Stage-3 leads, sends a follow-up DM via Meta Graph API, marks the row, and posts a daily summary to Ops via Gmail.",
+    results: [
+      "Every FB DM answered in under 1 second, 24/7 — bilingual EN/TL, grounded on real Maxicare + Manulife policy docs",
+      "Accredited-doctor lookup dropped from 3-5 minutes (manual spreadsheet) to <200 ms (typed Postgres query via tool call)",
+      "Zero forgotten Stage-3 lab-result follow-ups since the cron shipped — daily summary lands in Ops inbox at 10:05 AM MNL",
+      "Lead packets now arrive in the agent's inbox structured (name, plan, contact, summary, attached PDF form) — agents close instead of triaging",
+    ],
+    techStack: [
+      "n8n",
+      "OpenAI (Chat + Embeddings)",
+      "Supabase pgvector",
+      "Postgres Chat Memory",
+      "Meta Graph API (FB Messenger)",
+      "Gmail OAuth2",
+      "Cron Schedule (Asia/Manila)",
+      "AI Agent with Tools",
+    ],
+    featured: true,
+    claudeCode: {
+      summary:
+        "Aria's five-workflow architecture (core agent + KB ingestion + find-doctor tool + submit-lead tool + Stage-3 cron) was scaffolded inside Claude Code with the n8n-workflow-architect agent. Tool schemas + Meta webhook verification logic validated by n8n-validation-expert before deploy; pgvector retrieval tuned with postgres-patterns.",
+      agents: ["n8n-workflow-architect"],
+      skills: [
+        "n8n-auto-build",
+        "n8n-workflow-patterns",
+        "n8n-node-configuration",
+        "n8n-validation-expert",
+        "n8n-expression-syntax",
+        "postgres-patterns",
+      ],
+      mcps: ["n8n-mcp-tools"],
+    },
+    imageGroups: [
+      {
+        label: "Aria Core — FB Webhook → AI Agent → Reply",
+        description:
+          "Main agent workflow. Verifies Meta webhook, routes event type, extracts message, runs the AI Agent grounded on Supabase pgvector with Postgres chat memory and two tools (find_doctor, submit_lead), then sends the FB reply.",
+        images: ["/maxicare-aria/01-fb-lead-notify.png"],
+      },
+      {
+        label: "Submit Lead — Tool Workflow",
+        description:
+          "Called by Aria when a prospect commits. Sanitizes intake, inserts lead row, builds structured email content, sends to assigned agent, then conditionally fetches and emails the patient application-form PDF.",
+        images: ["/maxicare-aria/02-submit-lead-notify.png"],
+      },
+      {
+        label: "KB Ingestion — Drag-and-Drop Policy PDFs",
+        description:
+          "Broker uploads Maxicare + Manulife policy docs through a form. Recursive character splitter chunks the text, OpenAI embeddings vectorize it, Supabase Vector Store upserts — no devops needed.",
+        images: ["/maxicare-aria/03-kb-ingestion.png"],
+      },
+      {
+        label: "Stage-3 Lab-Result Follow-up — Daily 10 AM MNL Cron",
+        description:
+          "Scheduled sweep of eligible Stage-3 leads. Fetches from Postgres, builds the follow-up message, sends FB DM via Meta Graph, marks the row, aggregates a run summary, and emails Ops a daily digest.",
+        images: ["/maxicare-aria/04-lab-followup-cron.png"],
+      },
+      {
+        label: "Find Doctor — Accredited-Physician Tool",
+        description:
+          "Sub-workflow exposed to the AI Agent as a tool. Executes a typed Postgres query against the accredited-physician registry (Maxicare + Manulife panels) and formats results for the agent's reply.",
+        images: ["/maxicare-aria/05-find-doctor.png"],
+      },
+    ],
+  },
+  {
     slug: "octopulse",
     title: "Octopulse — Multi-tenant AI Ops Platform",
     type: "web",
