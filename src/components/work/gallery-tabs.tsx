@@ -56,28 +56,51 @@ export function GalleryTabs({
             aria-expanded={open}
             className={cn(
               "group inline-flex items-center gap-3 pl-4 pr-3 py-2.5 rounded-xl",
-              "bg-gradient-to-b from-bg-elevated to-bg border border-border",
-              "shadow-sm hover:border-accent/50 hover:shadow-md transition-all",
+              "border-2 border-accent shadow-sm",
+              "transition-all duration-200",
               "min-w-[260px] sm:min-w-[340px]",
-              open && "border-accent/60 shadow-md"
+              open
+                ? "bg-accent text-bg shadow-md"
+                : "bg-bg hover:bg-accent hover:text-bg hover:shadow-md"
             )}
           >
             <span className="flex-1 text-left min-w-0">
-              <span className="block font-mono text-[10px] uppercase tracking-wider text-fg-subtle">
+              <span
+                className={cn(
+                  "block font-mono text-[10px] uppercase tracking-wider transition-colors",
+                  open
+                    ? "text-bg/70"
+                    : "text-fg-subtle group-hover:text-bg/70"
+                )}
+              >
                 Section {active + 1} of {groups.length}
               </span>
-              <span className="block font-sans text-sm font-medium text-fg truncate">
+              <span
+                className={cn(
+                  "block font-sans text-sm font-medium truncate transition-colors",
+                  open ? "text-bg" : "text-fg group-hover:text-bg"
+                )}
+              >
                 {current.label}
               </span>
             </span>
-            <span className="font-mono text-[10px] px-2 py-1 rounded-md bg-accent-soft/40 text-accent border border-accent/30 shrink-0">
+            <span
+              className={cn(
+                "font-mono text-[10px] px-2 py-1 rounded-md border shrink-0 transition-colors",
+                open
+                  ? "bg-bg/15 text-bg border-bg/30"
+                  : "bg-accent-soft/40 text-accent border-accent/30 group-hover:bg-bg/15 group-hover:text-bg group-hover:border-bg/30"
+              )}
+            >
               {current.images.length} {current.images.length === 1 ? "img" : "imgs"}
             </span>
             <ChevronDown
               size={16}
               className={cn(
-                "text-fg-muted transition-transform shrink-0",
-                open && "rotate-180 text-accent"
+                "shrink-0 transition-all duration-200",
+                open
+                  ? "rotate-180 text-bg"
+                  : "text-accent group-hover:text-bg"
               )}
             />
           </button>
