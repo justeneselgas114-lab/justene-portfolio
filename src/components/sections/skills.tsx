@@ -176,9 +176,9 @@ export function Skills() {
           className="overflow-hidden relative py-4"
           style={{
             maskImage:
-              "linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%)",
+              "linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%)",
             WebkitMaskImage:
-              "linear-gradient(to right, transparent 0%, black 4%, black 96%, transparent 100%)",
+              "linear-gradient(to right, transparent 0%, black 18%, black 82%, transparent 100%)",
           }}
         >
           <div className="flex gap-12 w-max animate-marquee">
