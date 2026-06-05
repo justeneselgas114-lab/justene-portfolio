@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, Download, ArrowUpRight } from "lucide-react";
@@ -37,6 +37,17 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
+  const pendingHash = useRef<string | null>(null);
+
+  // After routing home from another page, scroll to the stored section.
+  useEffect(() => {
+    if (pathname !== "/" || !pendingHash.current) return;
+    const href = pendingHash.current;
+    pendingHash.current = null;
+    // Wait for the home sections to mount before measuring offsets.
+    const id = window.setTimeout(() => smoothScroll(href), 80);
+    return () => window.clearTimeout(id);
+  }, [pathname]);
 
   const goHome = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -44,6 +55,17 @@ export function Header() {
     if (pathname === "/") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
+      router.push("/");
+    }
+  };
+
+  // Anchor nav: scroll if already home, otherwise route home then scroll.
+  const handleAnchor = (href: string) => {
+    setOpen(false);
+    if (pathname === "/") {
+      smoothScroll(href);
+    } else {
+      pendingHash.current = href;
       router.push("/");
     }
   };
@@ -98,7 +120,7 @@ export function Header() {
               return isAnchor ? (
                 <button
                   key={link.name}
-                  onClick={() => smoothScroll(link.href)}
+                  onClick={() => handleAnchor(link.href)}
                   className={className}
                 >
                   {inner}
@@ -198,8 +220,12 @@ export function Header() {
                             {isAnchor ? (
                             <button
                               onClick={() => {
-                                setOpen(false);
-                                setTimeout(() => smoothScroll(link.href), 280);
+                                if (pathname === "/") {
+                                  setOpen(false);
+                                  setTimeout(() => smoothScroll(link.href), 280);
+                                } else {
+                                  handleAnchor(link.href);
+                                }
                               }}
                               className="group flex w-full items-center justify-between text-left px-4 py-3.5 text-2xl font-serif text-fg hover:text-accent rounded-lg transition-colors"
                             >
