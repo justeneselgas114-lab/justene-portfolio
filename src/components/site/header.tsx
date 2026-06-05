@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { Menu, X, Download, ArrowUpRight } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { motion, AnimatePresence } from "framer-motion";
@@ -34,6 +35,18 @@ function smoothScroll(href: string) {
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const goHome = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setOpen(false);
+    if (pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      router.push("/");
+    }
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -56,7 +69,9 @@ export function Header() {
           <div className="flex items-center gap-6">
             <Link
               href="/"
-              className="font-serif text-xl text-accent font-medium"
+              onClick={goHome}
+              aria-label="Go to home"
+              className="font-serif text-xl text-accent font-medium cursor-pointer"
             >
               Justene<span className="text-fg">.</span>
             </Link>
